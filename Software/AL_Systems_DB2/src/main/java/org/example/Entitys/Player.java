@@ -18,7 +18,7 @@ public class Player {
 
     }
 
-    Player(String uuid, String ign, String discordID){
+    public Player(String uuid, String ign, String discordID){
         this.uuid = uuid;
         this.ign = ign;
         this.discordID = discordID;

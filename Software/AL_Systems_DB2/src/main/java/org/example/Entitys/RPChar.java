@@ -21,7 +21,7 @@ public class RPChar {
 
     }
 
-    RPChar(String name, String title, boolean pvp){
+    public RPChar(String name, String title, boolean pvp){
         this.name = name;
         this.title = title;
         this.pvp = pvp;
