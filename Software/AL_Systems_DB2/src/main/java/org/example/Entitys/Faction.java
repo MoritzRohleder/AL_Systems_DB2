@@ -27,7 +27,7 @@ public class Faction {
 
     }
 
-    Faction(String name, String buff, String colorCode, Alignment alignment){
+    public Faction(String name, String buff, String colorCode, Alignment alignment){
         this.name = name;
         this.buff = buff;
         this.colorCode = colorCode;
