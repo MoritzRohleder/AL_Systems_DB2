@@ -6,14 +6,14 @@
         Die Klassen sind alle schon angegeben, wenn erstellt einmal aus dem Kommentar rauskopieren.
         -->
         <class>org.example.Entitys.Player</class>
+        <class>org.example.Entitys.RPChar</class>
         <!--
-        <class>RPChar</class>
-        <class>Gear</class>
-        <class>Faction</class>
-        <class>Region</class>
-        <class>Claimbuild</class>
-        <class>ProdSite</class>
-        <class>SpecialBuild</class>
+        <class>org.example.Entitys.Gear</class>
+        <class>org.example.Entitys.Faction</class>
+        <class>org.example.Entitys.Region</class>
+        <class>org.example.Entitys.Claimbuild</class>
+        <class>org.example.Entitys.ProdSite</class>
+        <class>org.example.Entitys.SpecialBuild</class>
         -->
         <properties>
             <property name="hibernate.connection.pool_size" value="10"/>
