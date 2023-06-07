@@ -1,0 +1,27 @@
+<persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
+    <persistence-unit name="PersistenceUnit">
+        <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
+        <!--
+        <class>Player</class>
+        <class>RPChar</class>
+        <class>Gear</class>
+        <class>Faction</class>
+        <class>Region</class>
+        <class>Claimbuild</class>
+        <class>ProdSite</class>
+        <class>SpecialBuild</class>
+        -->
+        <properties>
+            <property name="hibernate.connection.pool_size" value="10"/>
+            <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
+
+            <property name="hibernate.connection.url" value="jdbc:oracle:thin:@172.22.112.100:1521:fbpool"/>
+
+            <property name="hibernate.connection.username" value="C##FBPOOL116"/>
+            <property name="hibernate.connection.password" value="oracle"/>
+
+            <property name="dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+        </properties>
+    </persistence-unit>
+</persistence>
