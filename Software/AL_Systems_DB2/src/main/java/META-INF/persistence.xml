@@ -5,8 +5,8 @@
         Hier werden die Entitäten festgelegt, die als Klassen erstellt werden.
         Die Klassen sind alle schon angegeben, wenn erstellt einmal aus dem Kommentar rauskopieren.
         -->
+        <class>org.example.Entitys.Player</class>
         <!--
-        <class>Player</class>
         <class>RPChar</class>
         <class>Gear</class>
         <class>Faction</class>
