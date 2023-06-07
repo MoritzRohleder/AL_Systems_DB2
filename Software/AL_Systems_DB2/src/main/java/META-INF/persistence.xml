@@ -8,9 +8,9 @@
         <class>org.example.Entitys.Player</class>
         <class>org.example.Entitys.RPChar</class>
         <class>org.example.Entitys.Faction</class>
+        <class>org.example.Entitys.Region</class>
         <!--
         <class>org.example.Entitys.Gear</class>
-        <class>org.example.Entitys.Region</class>
         <class>org.example.Entitys.Claimbuild</class>
         <class>org.example.Entitys.ProdSite</class>
         <class>org.example.Entitys.SpecialBuild</class>
