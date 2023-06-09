@@ -1,8 +1,6 @@
 package org.example.Entitys;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.example.Enums.ClaimbuildType;
 
 @Entity
@@ -12,7 +10,13 @@ public class Claimbuild {
     private int id;
     private String name;
     private ClaimbuildType type;
-    //Koordinaten
+    @Embedded
+    /*@AttributeOverrides(
+            @AttributeOverride(name = "x", column = @Column(name = "cbXCoord")),
+            @AttributeOverride(name = "y", column = @Column(name = "cbYCoord")),
+            @AttributeOverride(name = "z", column = @Column(name = "cbZCoord"))
+    )*/
+    private CoordinatesEmbed coords;
 
     //build by Player
     //controlled by Faction
