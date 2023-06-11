@@ -3,6 +3,7 @@ package org.example.Entitys;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToOne;
 
 @Entity
 public class Player {
@@ -13,6 +14,9 @@ public class Player {
     private String ign;
     @Column(name = "discordID")
     private String discordID;
+
+    @OneToOne(mappedBy = "player")
+    private RPChar rpchar;
 
     public Player() {
 

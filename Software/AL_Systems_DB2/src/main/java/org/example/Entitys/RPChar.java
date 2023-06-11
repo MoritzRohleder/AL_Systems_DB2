@@ -1,9 +1,6 @@
 package org.example.Entitys;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 
 @Entity
 public class RPChar {
@@ -16,6 +13,10 @@ public class RPChar {
     private String title;
     @Column(name = "pvp", nullable = false)
     private boolean pvp;
+
+    @OneToOne
+    @JoinColumn(name = "player_uuid", referencedColumnName = "uuid")
+    private Player player;
 
     public RPChar(){
 
