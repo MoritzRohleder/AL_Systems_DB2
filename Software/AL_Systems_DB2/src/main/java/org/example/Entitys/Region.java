@@ -9,7 +9,7 @@ import java.util.Set;
 public class Region {
     @Id
     @GeneratedValue
-    private int id;
+    private int regionnumber;
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "type", nullable = false)
@@ -26,8 +26,8 @@ public class Region {
         this.type = type;
     }
 
-    public int getId() {
-        return id;
+    public int getRegionnumber() {
+        return regionnumber;
     }
 
     public String getName() {

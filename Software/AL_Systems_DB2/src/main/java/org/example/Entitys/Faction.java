@@ -20,6 +20,10 @@ public class Faction {
     private Alignment alignment;
     //private Set<String> aliases;
 
+    @OneToOne
+    @JoinColumn(name = "regionumber", referencedColumnName = "regionnumber")
+    private Region homeRegion;
+
     @OneToMany(mappedBy = "faction")
     private Set<Player> players;
 
