@@ -1,9 +1,6 @@
 package org.example.Entitys;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.Id;
-import jakarta.persistence.OneToOne;
+import jakarta.persistence.*;
 
 @Entity
 public class Player {
@@ -17,6 +14,10 @@ public class Player {
 
     @OneToOne(mappedBy = "player")
     private RPChar rpchar;
+
+    @ManyToOne
+    @JoinColumn(name = "faction", nullable = true)
+    private Faction faction;
 
     public Player() {
 
