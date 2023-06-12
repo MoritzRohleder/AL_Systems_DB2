@@ -9,12 +9,11 @@
         <class>org.example.Entitys.RPChar</class>
         <class>org.example.Entitys.Faction</class>
         <class>org.example.Entitys.Region</class>
-        <!--
         <class>org.example.Entitys.Gear</class>
         <class>org.example.Entitys.Claimbuild</class>
         <class>org.example.Entitys.ProdSite</class>
         <class>org.example.Entitys.SpecialBuild</class>
-        -->
+        
         <properties>
             <property name="hibernate.connection.pool_size" value="10"/>
             <property name="hibernate.connection.driver_class" value="oracle.jdbc.OracleDriver"/>
