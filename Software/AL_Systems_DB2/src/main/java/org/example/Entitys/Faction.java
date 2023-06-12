@@ -20,6 +20,9 @@ public class Faction {
     private Alignment alignment;
     //private Set<String> aliases;
 
+    @OneToMany(mappedBy = "faction")
+    private Set<Player> players;
+
     @OneToOne
     @JoinColumn(name = "leaderChar_id", referencedColumnName = "id")
     private RPChar leader;
