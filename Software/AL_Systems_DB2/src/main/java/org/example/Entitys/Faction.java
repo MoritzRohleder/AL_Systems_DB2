@@ -1,9 +1,6 @@
 package org.example.Entitys;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.example.Enums.Alignment;
 
 import java.util.Set;
@@ -22,6 +19,10 @@ public class Faction {
     @Column(name = "alignment", nullable = false)
     private Alignment alignment;
     //private Set<String> aliases;
+
+    @OneToOne
+    @JoinColumn(name = "leaderChar_id", referencedColumnName = "id")
+    private RPChar leader;
 
     public Faction(){
 
