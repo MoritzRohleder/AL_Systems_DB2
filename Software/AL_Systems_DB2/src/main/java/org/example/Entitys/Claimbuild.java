@@ -18,11 +18,9 @@ public class Claimbuild {
     )*/
     private CoordinatesEmbed coords;
 
-    //build by Player
-    //controlled by Faction
-    //located in Region
-    //has ProductionSite
-    //has SpecialBuild
+    @ManyToOne
+    @JoinColumn(name = "regionnumber", nullable = false)
+    private Region region;
 
 
     public Claimbuild() {

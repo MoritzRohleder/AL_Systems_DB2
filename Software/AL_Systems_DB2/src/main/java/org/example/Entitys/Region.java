@@ -1,10 +1,9 @@
 package org.example.Entitys;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.example.Enums.RegionType;
+
+import java.util.Set;
 
 @Entity
 public class Region {
@@ -15,6 +14,9 @@ public class Region {
     private String name;
     @Column(name = "type", nullable = false)
     private RegionType type;
+
+    @OneToMany(mappedBy = "region")
+    private Set<Claimbuild> claimbuilds;
 
     public Region() {
     }
