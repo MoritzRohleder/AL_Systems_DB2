@@ -23,6 +23,9 @@ public class Faction {
     @OneToMany(mappedBy = "faction")
     private Set<Player> players;
 
+    @OneToMany(mappedBy = "ally")
+    private Set<Faction> allies;
+
     @OneToOne
     @JoinColumn(name = "leaderChar_id", referencedColumnName = "id")
     private RPChar leader;
