@@ -1,8 +1,10 @@
 package org.example.Entitys;
 
 import jakarta.persistence.*;
+import jdk.jfr.Registered;
 
 @Entity
+@Table(name = "RPChar")
 public class RPChar {
     @Id
     @GeneratedValue

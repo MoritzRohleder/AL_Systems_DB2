@@ -1,8 +1,10 @@
 package org.example.Entitys;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
 
 @Entity
+@Table(name = "Weapon")
 public class Weapon extends Gear{
     private String type;
     private double dmg;

@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.example.Enums.ClaimbuildType;
 
 @Entity
+@Table(name = "Claimbuild")
 public class Claimbuild {
     @Id
     @GeneratedValue

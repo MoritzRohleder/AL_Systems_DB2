@@ -34,7 +34,7 @@
             drop-and-create heißt die Datenbank wird komplett gelöscht und dann neu erstellt
             -->
             <property name="dialect" value="org.hibernate.dialect.Oracle10gDialect"/>
-            <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+            <property name="jakarta.persistence.schema-generation.database.action" value="create"/>
         </properties>
     </persistence-unit>
 </persistence>

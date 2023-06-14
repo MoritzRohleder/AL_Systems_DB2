@@ -3,6 +3,7 @@ package org.example.Entitys;
 import jakarta.persistence.*;
 
 @Entity
+@Table(name = "Gear")
 public class Gear {
     @Id
     @GeneratedValue
