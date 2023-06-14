@@ -19,7 +19,7 @@
             <groupId>com.oracle</groupId>
             <artifactId>ojdbc</artifactId>
             <version>11.0.0</version>
-            <systemPath>C:/Users/morit/Documents/Studium/SechstesSemester/Datenbanken2/Project/AL_Systems_DB2/Software/AL_Systems_DB2/libs/ojdbc11.jar</systemPath>
+            <systemPath>C:/Users/luis.brinkmoeller/IdeaProjects/AL_Systems_DB2/Software/AL_Systems_DB2/libs/ojdbc11.jar</systemPath>
             <scope>system</scope>
         </dependency>
     </dependencies>

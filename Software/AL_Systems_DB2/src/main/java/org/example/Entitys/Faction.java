@@ -30,6 +30,9 @@ public class Faction {
     @OneToMany(mappedBy = "ally")
     private Set<Faction> allies;
 
+    @OneToMany(mappedBy = "controllingFaction")
+    private Set<Claimbuild> claimbuilds;
+
     @OneToOne
     @JoinColumn(name = "leaderChar_id", referencedColumnName = "id")
     private RPChar leader;
@@ -64,6 +67,8 @@ public class Faction {
     public Alignment getAlignment() {
         return alignment;
     }
+
+    public Set<Claimbuild> getClaimbuilds() {return claimbuilds;}
 
     public void setName(String name) {
         this.name = name;

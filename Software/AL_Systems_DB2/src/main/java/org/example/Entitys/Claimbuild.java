@@ -22,6 +22,10 @@ public class Claimbuild {
     @JoinColumn(name = "regionnumber", nullable = false)
     private Region region;
 
+    @ManyToOne
+    @JoinColumn(name="controllingFaction", nullable = false)
+    private Faction controllingFaction;
+
 
     public Claimbuild() {
     }

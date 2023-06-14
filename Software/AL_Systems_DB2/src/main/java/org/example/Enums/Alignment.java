@@ -2,6 +2,7 @@ package org.example.Enums;
 
 public enum Alignment {
     ANGMAR,
+    BREE,
     BLUE_MOUNTAINS,
     DALE,
     DOL_GULDUR,
@@ -20,6 +21,7 @@ public enum Alignment {
     MORDOR,
     MOREDAIN,
     NEAR_HARAD,
+    NONE,
     RHUN,
     ROHAN,
     TAUREDAIN,
