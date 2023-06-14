@@ -21,6 +21,7 @@ public enum Alignment {
     MORDOR,
     MOREDAIN,
     NEAR_HARAD,
+    NONE,
     RHUN,
     ROHAN,
     TAUREDAIN,
