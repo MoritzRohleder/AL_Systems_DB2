@@ -24,9 +24,9 @@
             <!--
             Hier werden die Log-In Daten hinterlegt
                 Moritz: C##FBPOOL116
-                Luis: C##FBPOOL
+                Luis: C##FBPOOL29
             -->
-            <property name="hibernate.connection.username" value="C##FBPOOL116"/>
+            <property name="hibernate.connection.username" value="C##FBPOOL29"/>
             <property name="hibernate.connection.password" value="oracle"/>
 
             <!--
