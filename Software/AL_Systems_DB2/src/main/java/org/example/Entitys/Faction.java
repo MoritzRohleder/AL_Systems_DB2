@@ -17,9 +17,8 @@ public class Faction {
     @Column(name = "color", nullable = false)
     private String colorCode;
     @Column(name = "alignment", nullable = false)
+    @Enumerated(EnumType.STRING)
     private Alignment alignment;
-    //private Set<String> aliases;
-
     @OneToOne
     @JoinColumn(name = "regionumber", referencedColumnName = "regionnumber")
     private Region homeRegion;
