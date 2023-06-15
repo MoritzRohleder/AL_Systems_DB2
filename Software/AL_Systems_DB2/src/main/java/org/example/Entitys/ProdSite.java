@@ -1,8 +1,6 @@
 package org.example.Entitys;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import org.example.Enums.ProductionSideType;
 import org.example.Enums.Resource;
 
@@ -11,6 +9,7 @@ public class ProdSite {
     @Id
     @GeneratedValue
     private int id;
+    @Enumerated(EnumType.STRING)
     private ProductionSideType type;
     private Resource resource;
     private int amount;
