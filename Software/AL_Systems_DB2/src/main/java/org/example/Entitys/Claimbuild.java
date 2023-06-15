@@ -9,6 +9,7 @@ public class Claimbuild {
     @GeneratedValue
     private int id;
     private String name;
+    @Enumerated(EnumType.STRING)
     private ClaimbuildType type;
     @Embedded
     /*@AttributeOverrides(
