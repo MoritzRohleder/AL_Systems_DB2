@@ -13,6 +13,7 @@ public class Region {
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "type", nullable = false)
+    @Enumerated(EnumType.STRING)
     private RegionType type;
 
     @OneToMany(mappedBy = "region")
