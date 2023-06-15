@@ -2,8 +2,8 @@ package org.example.Entitys;
 
 import jakarta.persistence.*;
 
-@Entity
-public class Gear {
+@MappedSuperclass
+public abstract class Gear {
     @Id
     @GeneratedValue
     private int id;

@@ -2,7 +2,7 @@ package org.example.Entitys;
 
 import jakarta.persistence.Entity;
 
-@Entity
+@Entity(name = "Armour")
 public class Armour extends Gear{
     private String type;
     private double protection;
