@@ -2,6 +2,9 @@ package org.example.Entitys;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 public class RPChar {
     @Id
@@ -17,6 +20,21 @@ public class RPChar {
     @OneToOne
     @JoinColumn(name = "player_uuid", referencedColumnName = "uuid")
     private Player player;
+
+    @ManyToMany
+    @JoinTable(
+            name = "armours",
+            joinColumns = @JoinColumn(name = "RPChar_ID"),
+            inverseJoinColumns = @JoinColumn(name = "Armour_ID"))
+    private Armour[] armours = new Armour[8];
+
+    @ManyToMany
+    @JoinTable(
+            name = "weapons",
+            joinColumns = @JoinColumn(name = "RPChar_ID"),
+            inverseJoinColumns = @JoinColumn(name = "Weapon_ID")
+    )
+    private List<Weapon> weapons = new ArrayList<>();
 
     public RPChar(){
 

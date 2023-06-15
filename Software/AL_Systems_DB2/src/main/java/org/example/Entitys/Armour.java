@@ -1,12 +1,18 @@
 package org.example.Entitys;
 
 import jakarta.persistence.Entity;
+import jakarta.persistence.ManyToMany;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "Armour")
 public class Armour extends Gear{
     private String type;
     private double protection;
 
+    @ManyToMany(mappedBy = "armours")
+    private List<RPChar> rpchar = new ArrayList<>();
     public Armour() {
         super();
     }
