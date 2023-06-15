@@ -3,6 +3,7 @@ package org.example.Entitys;
 import jakarta.persistence.*;
 import org.example.Enums.Alignment;
 
+import java.util.HashSet;
 import java.util.Set;
 
 @Entity
@@ -19,6 +20,8 @@ public class Faction {
     @Column(name = "alignment", nullable = false)
     @Enumerated(EnumType.STRING)
     private Alignment alignment;
+    @ElementCollection()
+    private Set<String> aliases = new HashSet<>();
     @OneToOne
     @JoinColumn(name = "regionumber", referencedColumnName = "regionnumber")
     private Region homeRegion;
