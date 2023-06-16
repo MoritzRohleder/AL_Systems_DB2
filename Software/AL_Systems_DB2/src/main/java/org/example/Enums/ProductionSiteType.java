@@ -1,6 +1,6 @@
 package org.example.Enums;
 
-public enum ProductionSideType {
+public enum ProductionSiteType {
     Farm,
     FishingLodge,
     Mine,
@@ -11,5 +11,7 @@ public enum ProductionSideType {
     Orchard,
     LumberCamp,
     Workshop,
-    PearlFisher
+    PearlFisher,
+    HouseOfLore,
+    DyeHouse
 }
