@@ -3,6 +3,8 @@ package org.example.Entitys;
 import jakarta.persistence.*;
 import org.example.Enums.ClaimbuildType;
 
+import java.util.Set;
+
 @Entity
 public class Claimbuild {
     @Id
@@ -27,6 +29,8 @@ public class Claimbuild {
     @JoinColumn(name="controllingFaction", nullable = false)
     private Faction controllingFaction;
 
+    @OneToMany(mappedBy = "claimbuild")
+    Set<UsedProductionSite> productionSites;
 
     public Claimbuild() {
     }
