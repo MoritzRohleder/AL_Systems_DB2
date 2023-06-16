@@ -17,6 +17,7 @@ public class UsedProductionSite {
     @JoinColumn(name = "productionSite_ID")
     private ProdSite productionSite;
 
+    @Enumerated(EnumType.STRING)
     private Resource resource;
 
     private int amount;
