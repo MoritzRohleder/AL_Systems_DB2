@@ -1,8 +1,7 @@
 package org.example.Entitys;
 
 import jakarta.persistence.*;
-import org.example.Enums.ProductionSideType;
-import org.example.Enums.Resource;
+import org.example.Enums.ProductionSiteType;
 
 import java.util.Set;
 
@@ -12,14 +11,14 @@ public class ProdSite {
     @GeneratedValue
     private int id;
     @Enumerated(EnumType.STRING)
-    private ProductionSideType type;
+    private ProductionSiteType type;
     @OneToMany(mappedBy = "productionSite")
     private Set<UsedProductionSite> usingClaimbuilds;
 
     public ProdSite() {
     }
 
-    public ProdSite(ProductionSideType type) {
+    public ProdSite(ProductionSiteType type) {
         this.type = type;
     }
 
@@ -27,11 +26,11 @@ public class ProdSite {
         return id;
     }
 
-    public ProductionSideType getType() {
+    public ProductionSiteType getType() {
         return type;
     }
 
-    public void setType(ProductionSideType type) {
+    public void setType(ProductionSiteType type) {
         this.type = type;
     }
 }
