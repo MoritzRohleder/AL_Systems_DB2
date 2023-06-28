@@ -1,11 +1,10 @@
 package org.example.Entitys;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
-import org.example.Enums.ProductionSideType;
-import org.example.Enums.Resource;
+
+import jakarta.persistence.*;
+import org.example.Enums.ProductionSiteType;
+
+import java.util.Set;
 
 @Entity
 @Table(name = "Production Side")
@@ -13,44 +12,27 @@ public class ProdSite {
     @Id
     @GeneratedValue
     private int id;
-    private ProductionSideType type;
-    private Resource producedResource;
-    private int amount;
+    @Enumerated(EnumType.STRING)
+    private ProductionSiteType type;
+    @OneToMany(mappedBy = "productionSite")
+    private Set<UsedProductionSite> usingClaimbuilds;
 
     public ProdSite() {
     }
 
-    public ProdSite(ProductionSideType type, Resource producedResource, int amount) {
+    public ProdSite(ProductionSiteType type) {
         this.type = type;
-        this.producedResource = producedResource;
-        this.amount = amount;
     }
 
     public int getId() {
         return id;
     }
 
-    public ProductionSideType getType() {
+    public ProductionSiteType getType() {
         return type;
     }
 
-    public Resource getProducedResource() {
-        return producedResource;
-    }
-
-    public int getAmount() {
-        return amount;
-    }
-
-    public void setType(ProductionSideType type) {
+    public void setType(ProductionSiteType type) {
         this.type = type;
-    }
-
-    public void setProducedResource(Resource resource) {
-        this.producedResource = resource;
-    }
-
-    public void setAmount(int amount) {
-        this.amount = amount;
     }
 }

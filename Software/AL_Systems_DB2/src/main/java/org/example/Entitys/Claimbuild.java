@@ -3,6 +3,8 @@ package org.example.Entitys;
 import jakarta.persistence.*;
 import org.example.Enums.ClaimbuildType;
 
+import java.util.Set;
+
 @Entity
 @Table(name = "Claimbuild")
 public class Claimbuild {
@@ -10,6 +12,7 @@ public class Claimbuild {
     @GeneratedValue
     private int id;
     private String name;
+    @Enumerated(EnumType.STRING)
     private ClaimbuildType type;
     @Embedded
     /*@AttributeOverrides(
@@ -27,6 +30,8 @@ public class Claimbuild {
     @JoinColumn(name="controllingFaction", nullable = false)
     private Faction controllingFaction;
 
+    @OneToMany(mappedBy = "claimbuild")
+    Set<UsedProductionSite> productionSites;
 
     public Claimbuild() {
     }
