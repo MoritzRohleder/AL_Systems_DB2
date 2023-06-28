@@ -1,11 +1,13 @@
 package org.example.Entitys;
 
 import jakarta.persistence.*;
+import jdk.jfr.Registered;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "RPChar")
 public class RPChar {
     @Id
     @GeneratedValue

@@ -6,6 +6,7 @@ import org.example.Enums.RegionType;
 import java.util.Set;
 
 @Entity
+@Table(name = "Region")
 public class Region {
     @Id
     @GeneratedValue

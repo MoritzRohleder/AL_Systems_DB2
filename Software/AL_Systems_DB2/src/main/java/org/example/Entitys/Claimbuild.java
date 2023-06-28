@@ -6,6 +6,7 @@ import org.example.Enums.ClaimbuildType;
 import java.util.Set;
 
 @Entity
+@Table(name = "Claimbuild")
 public class Claimbuild {
     @Id
     @GeneratedValue

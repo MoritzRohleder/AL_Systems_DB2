@@ -1,11 +1,13 @@
 package org.example.Entitys;
 
+
 import jakarta.persistence.*;
 import org.example.Enums.ProductionSiteType;
 
 import java.util.Set;
 
 @Entity
+@Table(name = "Production Side")
 public class ProdSite {
     @Id
     @GeneratedValue

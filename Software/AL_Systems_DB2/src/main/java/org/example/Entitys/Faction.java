@@ -7,6 +7,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 @Entity
+@Table(name = "Faction")
 public class Faction {
     @Id
     @GeneratedValue
@@ -29,8 +30,8 @@ public class Faction {
     @OneToMany(mappedBy = "faction")
     private Set<Player> players;
 
-    @OneToMany(mappedBy = "ally")
-    private Set<Faction> allies;
+    //@OneToMany(mappedBy = "ally")
+    //private Set<Faction> allies;
 
     @OneToMany(mappedBy = "controllingFaction")
     private Set<Claimbuild> claimbuilds;
@@ -48,6 +49,8 @@ public class Faction {
         this.buff = buff;
         this.colorCode = colorCode;
         this.alignment = alignment;
+        this.leader = null;
+        this.homeRegion = null;
     }
 
     public int getId() {
