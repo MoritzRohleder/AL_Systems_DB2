@@ -29,7 +29,7 @@ CREATE TYPE Claimbuild_Type AS OBJECT (
     aliasName VARCHAR(50)
 );
 /
-CREATE TYPE Aliases_NT AS TABLE OF Aliases_Type;
+CREATE TYPE Aliases_NT AS TABLE OF REF Aliases_Type;
 /*
  * Faction_Type
  * speichert eine Faction mit der ID, dem Namen, dem Buff, der Farbe, das In-Game-Alignment und den Alias-Namen.
@@ -70,10 +70,14 @@ CREATE TYPE Armour_Type UNDER Gear_Type
  * ============================
  */
 
- CREATE TABLE Factions OF Faction_Type(
-     Aliases Aliases_NT
- )
- NESTED TABLE Aliases STORE AS Aliases_NT_TAB;
+CREATE TABLE Factions OF Faction_Type(
+    FacID PRIMARY KEY
+)
+    NESTED TABLE Aliases STORE AS Aliases_NT_TAB;
 /
  CREATE TABLE Claimbuilds OF Claimbuild_Type;
+/
+CREATE TABLE Armour OF Armour_Type;
+/
+CREATE TABLE Weapon OF Weapon_Type;
 
