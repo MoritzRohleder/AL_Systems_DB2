@@ -15,14 +15,10 @@ import java.util.Set;
 
 public class Main {
     public static void main(String[] args) {
-        //DBManager.persistFaction(new Faction("Rivendell", "2x healing speed. Can build athelas farms. The farms provide 12 athelas per month. Must show some athelas in the farm build.", "#49688b", Alignment.HIGH_ELF));
-
-        Set<Faction> factions = InitialFactionData.initializeFactions();
-        for (Faction faction: factions) {
-            DBManager.persistFaction(faction);
-        }
-        Set<SpecialBuild> specialBuilds = InitialSpecialBuildData.initialiseSpecialBuilds();
-        Set<ProdSite> productionSites = InitialProdSiteData.initialiseProdSites();
+        //Player
+        //RP-CHar
+        //Weapon & Armour
+        //Faction
         MainMenu.run();
     }
 }

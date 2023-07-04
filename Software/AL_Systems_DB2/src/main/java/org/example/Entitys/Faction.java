@@ -23,9 +23,9 @@ public class Faction {
     private Alignment alignment;
     @ElementCollection()
     private Set<String> aliases = new HashSet<>();
-    @OneToOne
-    @JoinColumn(name = "regionumber", referencedColumnName = "regionnumber")
-    private Region homeRegion;
+    //@OneToOne
+    //@JoinColumn(name = "regionumber", referencedColumnName = "regionnumber")
+    //private Region homeRegion;
 
     @OneToMany(mappedBy = "faction")
     private Set<Player> players;
@@ -33,8 +33,8 @@ public class Faction {
     //@OneToMany(mappedBy = "ally")
     //private Set<Faction> allies;
 
-    @OneToMany(mappedBy = "controllingFaction")
-    private Set<Claimbuild> claimbuilds;
+    //@OneToMany(mappedBy = "controllingFaction")
+    //private Set<Claimbuild> claimbuilds;
 
     @OneToOne
     @JoinColumn(name = "leaderChar_id", referencedColumnName = "id")
@@ -50,7 +50,7 @@ public class Faction {
         this.colorCode = colorCode;
         this.alignment = alignment;
         this.leader = null;
-        this.homeRegion = null;
+        //this.homeRegion = null;
     }
 
     public int getId() {
@@ -73,7 +73,7 @@ public class Faction {
         return alignment;
     }
 
-    public Set<Claimbuild> getClaimbuilds() {return claimbuilds;}
+    //public Set<Claimbuild> getClaimbuilds() {return claimbuilds;}
 
     public void setName(String name) {
         this.name = name;
