@@ -2,6 +2,7 @@ package org.example.DBConntection;
 
 import jakarta.persistence.*;
 import org.example.Entitys.*;
+import org.hibernate.annotations.Parameter;
 import org.hibernate.type.AnyType;
 
 import java.util.LinkedList;
@@ -79,10 +80,18 @@ public class DBManager {
         em.close();
         return armours;
     }
-    /*
-    TODO loadArmourByMaterial(String material){}
-    WHERE a.name LIKE material%
-     */
+
+    public static List<Armour> loadArmoursByMaterial(String material){
+        List<Armour> armours;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT a FROM Armour a WHERE a.name "
+                                     + "LIKE '" + material + "%'");
+        armours = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return armours;
+    }
 
     /*
     Weapon Querys
@@ -123,10 +132,17 @@ public class DBManager {
     WHERE w.type = type
      */
 
-    /*
-    TODO loadWeaponByMaterial(String material){}
-    WHERE w.name LIKE material%
-     */
+    public static List<Weapon> loadWeaponByMaterial(String material){
+        List<Weapon> weapons;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT w FROM Weapon w WHERE w.name "
+                                     + "LIKE '" + material + "%'");
+        weapons = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return weapons;
+    }
 
     /*
     Faction Querys
@@ -175,9 +191,6 @@ public class DBManager {
     Player Querys
      */
 
-    /*
-    TODO loadPlayerFullTable(){}
-     */
     public static List<Player> loadPlayerFullTable(){
         List<Player> players;
         em = getEntityManager();
@@ -234,9 +247,17 @@ public class DBManager {
     RPChar Querys
      */
 
-    /*
-    TODO loadRPCharFullTable(){}
-     */
+    public static List<RPChar> loadRPCharFullTable(){
+        List<RPChar> chars;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT rpc FROM RPChar rpc",
+                                     RPChar.class);
+        chars = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return chars;
+    }
 
     /*
     TODO loadRPCharByID(int id){}

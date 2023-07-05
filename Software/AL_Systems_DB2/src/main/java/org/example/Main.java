@@ -43,41 +43,10 @@ public class Main {
         aulendur.setWeapons(weapons1);
         DBManager.persist(aulendur);
 
-        //MainMenu.run();
-
-        Faction fac1 = DBManager.loadFactionByName("Gondor");
-        System.out.println(fac1);
-
         Faction gondor = DBManager.loadFactionByName("Gondor");
         RPChar aulendur1 = DBManager.loadRPCharByName("Aulendur");
         gondor.setFactionLeader(aulendur1);
         DBManager.update(gondor);
-
-        Faction fac2 = DBManager.loadFactionByName("Gondor");
-        System.out.println(fac2);
-
-        Player p1 = DBManager.loadPlayerByIGN("Anedhel");
-        System.out.println(p1);
-
-        Player p2 = DBManager.loadPlayerByDiscordID("anedhel");
-        System.out.println(p2);
-
-        Faction fac3 = DBManager.loadFactionByName("Gondor");
-        fac3.setFactionLeader(null);
-        DBManager.update(fac3);
-        DBManager.deleteEntry(DBManager.loadRPCharByName("Aulendur"));
-
-        RPChar rpc = DBManager.loadRPCharByName("Aulendur");
-        System.out.println(rpc);
-
-        DBManager.deleteEntry(DBManager.loadWeaponByName("Iron Sword"));
-
-        Weapon w = DBManager.loadWeaponByName("Iron Sword");
-        System.out.println(w);
-
-        DBManager.deleteEntry(DBManager.loadArmourByName("Iron Helmet"));
-
-        Armour a = DBManager.loadArmourByName("Iron Helmet");
-        System.out.println(a);
+        //MainMenu.run();
     }
 }
