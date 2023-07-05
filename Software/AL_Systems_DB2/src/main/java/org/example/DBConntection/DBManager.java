@@ -106,9 +106,24 @@ public class DBManager {
         return weapons;
     }
 
-    /*
-    TODO loadWeaponByID(int id){}
-     */
+    public static Weapon loadWeaponByID(int id){
+        Weapon weapon = null;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Weapon> query =
+                em.createQuery("SELECT w FROM Weapon w WHERE w.id = '" + id +
+                               "'", Weapon.class);
+        try {
+            weapon = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We couldn´t find a weapon with the ID " + id);
+        }finally {
+            em.close();
+        }
+        return weapon;
+    }
+
     public static Weapon loadWeaponByName(String name){
         em = getEntityManager();
         em.getTransaction().begin();
