@@ -216,9 +216,23 @@ public class DBManager {
         return players;
     }
 
-    /*
-    TODO loadPlayerByUUID(String uuid){}
-     */
+    public static Player loadPlayerByUUID(String uuid){
+        Player player = null;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p "
+                                                  + "WHERE p.uuid = '" + uuid + "'",
+                                                  Player.class);
+        try {
+            player = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch(NoResultException e){
+            System.out.println("We could not find a Player with the UUID " + uuid);
+        }finally {
+            em.close();
+        }
+        return player;
+    }
 
     public static Player loadPlayerByIGN(String name){
         em = getEntityManager();
