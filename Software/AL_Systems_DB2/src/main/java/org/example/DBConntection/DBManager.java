@@ -68,10 +68,6 @@ public class DBManager {
         return armour;
     }
 
-    /*
-    TODO loadArmourByType(String type){}
-    WHERE a.type = type
-     */
     public static List<Armour> loadArmoursByType(String type){
         List<Armour> armours;
         em = getEntityManager();
@@ -92,9 +88,16 @@ public class DBManager {
     Weapon Querys
      */
 
-    /*
-    TODO loadWeaponFullTable(){}
-     */
+    public static List<Weapon> loadWeaponFullTable(){
+        List<Weapon> weapons;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT w FROM Weapon w", Weapon.class);
+        weapons = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return weapons;
+    }
 
     /*
     TODO loadWeaponByID(int id){}
