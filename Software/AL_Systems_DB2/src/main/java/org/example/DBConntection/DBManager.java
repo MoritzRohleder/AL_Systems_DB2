@@ -95,9 +95,16 @@ public class DBManager {
         em = getEntityManager();
         em.getTransaction().begin();
         TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p WHERE p.discordID = '" + discordID + "'", Player.class);
-        Player p = query.getSingleResult();
-        em.getTransaction().commit();
-        em.close();
+        Player p = null;
+        try {
+            p = query.getSingleResult();
+            em.getTransaction().commit();
+            em.close();
+        }catch(NoResultException e){
+            System.out.println("We could not find the Player with DiscordID " + discordID);
+        }finally {
+            em.close();
+        }
         return p;
     }
 

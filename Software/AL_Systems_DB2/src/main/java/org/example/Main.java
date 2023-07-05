@@ -48,6 +48,9 @@ public class Main {
         Player p1 = DBManager.loadPlayerByIGN("Anedhel");
         System.out.println(p1.toString());
 
+        DBManager.deleteEntry(aulendur);
+        DBManager.deleteEntry(anedhel);
+
         Player p2 = DBManager.loadPlayerByDiscordID("anedhel");
         System.out.println(p2.toString());
 
