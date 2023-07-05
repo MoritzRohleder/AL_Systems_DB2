@@ -65,17 +65,11 @@ public class Main {
         Faction fac3 = DBManager.loadFactionByName("Gondor");
         fac3.setFactionLeader(null);
         DBManager.update(fac3);
-        DBManager.deleteEntry(DBManager.loadRPCharByName("Aulendur"));
-
         RPChar rpc = DBManager.loadRPCharByName("Aulendur");
         System.out.println(rpc);
 
-        DBManager.deleteEntry(DBManager.loadWeaponByName("Iron Sword"));
-
         Weapon w = DBManager.loadWeaponByName("Iron Sword");
         System.out.println(w);
-
-        DBManager.deleteEntry(DBManager.loadArmourByName("Iron Helmet"));
 
         Armour a = DBManager.loadArmourByName("Iron Helmet");
         System.out.println(a);
