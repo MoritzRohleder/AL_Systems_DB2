@@ -19,11 +19,15 @@ public class DBManager {
     }
 
     /*
-    TODO Bei allen noch nach ID finden und ganze Tabelle ausgeben
+    Armour Querys
      */
 
     /*
-    Armour Querys
+    TODO loadArmourFullTable(){}
+     */
+
+    /*
+    TODO loadArmourByID(int id){}
      */
     public static Armour loadArmourByName(String name){
         em = getEntityManager();
@@ -54,6 +58,14 @@ public class DBManager {
     /*
     Weapon Querys
      */
+
+    /*
+    TODO loadWeaponFullTable(){}
+     */
+
+    /*
+    TODO loadWeaponByID(int id){}
+     */
     public static Weapon loadWeaponByName(String name){
         em = getEntityManager();
         em.getTransaction().begin();
@@ -83,6 +95,15 @@ public class DBManager {
     /*
     Faction Querys
      */
+
+    /*
+    TODO loadFactionFullTable(){}
+     */
+
+    /*
+    TODO loadFactionByID(int id){}
+     */
+
     public static Faction loadFactionByName(String name){
         em = getEntityManager();
         em.getTransaction().begin();
@@ -109,6 +130,14 @@ public class DBManager {
 
     /*
     Player Querys
+     */
+
+    /*
+    TODO loadPlayerFullTable(){}
+     */
+
+    /*
+    TODO loadPlayerByUUID(String uuid){}
      */
     public static Player loadPlayerByIGN(String name){
         em = getEntityManager();
@@ -150,6 +179,14 @@ public class DBManager {
 
     /*
     RPChar Querys
+     */
+
+    /*
+    TODO loadRPCharFullTable(){}
+     */
+
+    /*
+    TODO loadRPCharByID(int id){}
      */
     public static RPChar loadRPCharByName(String name) {
         em = getEntityManager();
