@@ -74,8 +74,20 @@ public class RPChar {
         return title;
     }
 
-    public boolean isPvp() {
+    public boolean getPvp() {
         return pvp;
+    }
+
+    public Player getPlayer() {
+        return player;
+    }
+
+    public List<Weapon> getWeapons() {
+        return weapons;
+    }
+
+    public Armour[] getArmours() {
+        return armours;
     }
 
     public void setName(String name) {
