@@ -131,6 +131,17 @@ public class DBManager {
     TODO loadWeaponByType(String type){}
     WHERE w.type = type
      */
+    public static List<Weapon> loadWeaponsByType(String type){
+        List<Weapon> weapons;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT a FROM Weapon a WHERE a.type = "
+                + "'" + type + "'");
+        weapons = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return weapons;
+    }
 
     public static List<Weapon> loadWeaponByMaterial(String material){
         List<Weapon> weapons;
@@ -143,6 +154,7 @@ public class DBManager {
         em.close();
         return weapons;
     }
+    
 
     /*
     Faction Querys
