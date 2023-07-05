@@ -56,7 +56,10 @@ public class Player {
 
     @Override
     public String toString(){
-        return String.format("Player %s with uuid %s and DiscordID %s\n" +
-                "Member of %s", ign, uuid, discordID, faction.getName());
+        return this != null ? String.format("Player %s with uuid %s and "
+                                          + "DiscordID "
+                                    + "%s\n" +
+                "Member of %s", ign, uuid, discordID, faction.getName()) :
+                "Player is null";
     }
 }

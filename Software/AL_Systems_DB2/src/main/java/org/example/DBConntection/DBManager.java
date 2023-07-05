@@ -18,76 +18,112 @@ public class DBManager {
         return emf.createEntityManager();
     }
 
-    public static void persistFaction(Faction faction){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(faction);
-        em.getTransaction().commit();
-        em.close();
-    }
+    /*
+    TODO Bei allen noch nach ID finden und ganze Tabelle ausgeben
+     */
 
-    public static void persistArmour(Armour armour){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(armour);
-        em.getTransaction().commit();
-        em.close();
-    }
-
+    /*
+    Armour Querys
+     */
     public static Armour loadArmourByName(String name){
         em = getEntityManager();
         em.getTransaction().begin();
         TypedQuery<Armour> query = em.createQuery("SELECT a FROM Armour a WHERE a.name = '" + name + "'", Armour.class);
-        Armour armour = query.getSingleResult();
-        em.getTransaction().commit();
-        em.close();
+        Armour armour = null;
+        try {
+            armour = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch(NoResultException e){
+            System.out.println("We could not find Armor with Name " + name);
+        }finally {
+            em.close();
+        }
         return armour;
     }
 
-    public static Armour[] loadArmourByRPChar(RPChar rpChar){
+    /*
+    TODO loadArmourByType(String type){}
+    WHERE a.type = type
+     */
+
+    /*
+    TODO loadArmourByMaterial(String material){}
+    WHERE a.name LIKE material%
+     */
+
+    /*
+    Weapon Querys
+     */
+    public static Weapon loadWeaponByName(String name){
         em = getEntityManager();
         em.getTransaction().begin();
-        Query query = em.createQuery("SELECT a FROM Armour a "
-                                                  + "WHERE a.rpchar IN '" + rpChar + "'");
-        List armours = List.of(query.getResultList());
-        em.getTransaction().commit();
-        em.close();
-        Armour[] armoursArray = new Armour[armours.size()];
-        armours.toArray(armoursArray);
-        return armoursArray;
+        TypedQuery<Weapon> query = em.createQuery("SELECT w FROM Weapon w "
+                                                  + "WHERE w.name = '" + name + "'",
+                                                  Weapon.class);
+        Weapon weapon = null;
+        try {
+            weapon = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            em.close();
+        }
+        return weapon;
     }
 
-    public static void persistWeapon(Weapon weapon){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(weapon);
-        em.getTransaction().commit();
-        em.close();
-    }
+    /*
+    TODO loadWeaponByType(String type){}
+    WHERE w.type = type
+     */
 
+    /*
+    TODO loadWeaponByMaterial(String material){}
+    WHERE w.name LIKE material%
+     */
+
+    /*
+    Faction Querys
+     */
     public static Faction loadFactionByName(String name){
         em = getEntityManager();
+        em.getTransaction().begin();
         TypedQuery<Faction> query = em.createQuery("SELECT f FROM Faction f WHERE f.name = '" + name + "'", Faction.class);
-        Faction fac = query.getSingleResult();
-        em.close();
+        Faction fac = null;
+        try {
+            fac = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We could not find Faction with name " + name);
+        }finally {
+            em.close();
+        }
         return fac;
     }
 
-    public static void persistPlayer(Player player){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(player);
-        em.getTransaction().commit();
-        em.close();
-    }
+    /*
+    TODO loadFactionLeader(Faction fac){}
+     */
 
+    /*
+    TODO loadPlayersOfFaction(Faction fac){}
+     */
+
+    /*
+    Player Querys
+     */
     public static Player loadPlayerByIGN(String name){
         em = getEntityManager();
         em.getTransaction().begin();
         TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p WHERE p.ign = '" + name + "'", Player.class);
-        Player p = query.getSingleResult();
-        em.getTransaction().commit();
-        em.close();
+        Player p = null;
+        try {
+            p = query.getSingleResult();
+            em.getTransaction().commit();
+            em.close();
+        }catch(NoResultException e){
+            System.out.println("We could not find the Player with IGN " + name);
+        }finally {
+            em.close();
+        }
         return p;
     }
 
@@ -108,28 +144,59 @@ public class DBManager {
         return p;
     }
 
-    public static void persistRPChar(RPChar rpchar){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(rpchar);
-        em.getTransaction().commit();
-        em.close();
-    }
+    /*
+    TODO loadFactionOfPlayer(Player p){}
+     */
 
+    /*
+    RPChar Querys
+     */
     public static RPChar loadRPCharByName(String name) {
         em = getEntityManager();
         em.getTransaction().begin();
         TypedQuery<RPChar> query = em.createQuery("SELECT rpc FROM RPChar rpc"
                                                   + " WHERE  rpc.name = '" + name + "'", RPChar.class);
-        RPChar rpc = query.getSingleResult();
-        rpc.setArmours(loadArmourByRPChar(rpc));
-        em.getTransaction().commit();
-        em.close();
+        RPChar rpc = null;
+        try{
+            rpc = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We could not find the RPChar with the name " + name);
+        }finally {
+            em.close();
+        }
         return rpc;
     }
 
+    /*
+    TODO loadPlayerOfRPChar(RPChar rpc){}
+     */
+
+    /*
+    TODO loadWeaponsOfRPChar(RPChar rpc){}
+     */
+
+    /*
+    TODO loadArmourOfRPChar(RPChar rpc){}
+     */
+
+    /*
+    TODO loadRPCharsByPvP(PvP pvp){}
+     */
+
+    /*
+    Allgemeine Querys
+     */
+    public static void persist(Object entity){
+        em = getEntityManager();
+        em.getTransaction().begin();
+        em.persist(entity);
+        em.getTransaction().commit();
+        em.close();
+    }
+
     public static void deleteEntry(Object entity){
-        EntityManager em = getEntityManager();
+        em = getEntityManager();
         em.getTransaction().begin();
         em.remove(em.contains(entity) ? entity: em.merge(entity));
         em.getTransaction().commit();
@@ -137,43 +204,10 @@ public class DBManager {
     }
 
     public static void update(Object entity) {
-        EntityManager em = getEntityManager();
+        em = getEntityManager();
         em.getTransaction().begin();
-        em.refresh(entity);
+        em.merge(entity);
         em.getTransaction().commit();
         em.close();
     }
-
-    /*public static void persistClaimbuild(Claimbuild cb){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(cb);
-        em.getTransaction().commit();
-        em.close();
-    }*/
-
-    /*public static void persistProdSite(ProdSite prodSite){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(prodSite);
-        em.getTransaction().commit();
-        em.close();
-    }*/
-
-    /*public static void persistRegion(Region region){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(region);
-        em.getTransaction().commit();
-        em.close();
-    }*/
-
-    /*public static void persistSpecialBuild(SpecialBuild specialBuild){
-        em = getEntityManager();
-        em.getTransaction().begin();
-        em.persist(specialBuild);
-        em.getTransaction().commit();
-        em.close();
-    }*/
-
 }

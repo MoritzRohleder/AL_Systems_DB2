@@ -93,8 +93,13 @@ public class Faction {
 
     @Override
     public String toString(){
-        return String.format("%s using the %s Alignment and the Color %s\n" +
-                "Buff is: %s", name, alignment.name(), colorCode, buff);
+        return this != null ? String.format("%s using the %s Alignment and "
+                                            + "the Color %s\n "
+                             + "Buff: %s\n"
+                             + "Faction Leader: %s", name, alignment.name(),
+                             colorCode, buff, leader != null ?
+                                     leader.getName() : "No Leader") :
+                "Faction is null";
     }
     @Override
     public boolean equals(Object obj) {
@@ -108,5 +113,9 @@ public class Faction {
         }else{
             return false;
         }
+    }
+
+    public void setFactionLeader(RPChar name) {
+        this.leader = name;
     }
 }

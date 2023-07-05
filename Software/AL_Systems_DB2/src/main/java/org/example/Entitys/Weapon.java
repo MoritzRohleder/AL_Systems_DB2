@@ -43,6 +43,7 @@ public class Weapon extends Gear{
 
     @Override
     public String toString(){
-        return String.format("%s of Type %s dealing %s Damage", super.toString(), type, dmg);
+        return this != null ? String.format("%s of Type %s dealing %s Damage",
+                              super.toString(), type, dmg) : "Weapon is null";
     }
 }

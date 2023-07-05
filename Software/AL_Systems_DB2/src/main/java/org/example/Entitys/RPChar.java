@@ -92,12 +92,17 @@ public class RPChar {
 
     @Override
     public String toString(){
+        if(this == null){
+            return "RPChar is null";
+        }
         String armoursString = "";
         for (int i = 0; i < armours.length; i++){
-            armoursString.concat(armours[i].toString());
+            armoursString += armours[i].getName() + ", ";
         }
         String weaponString = "";
-        weapons.forEach(weapon -> weaponString.concat(weapon.toString()));
+        for(int i = 0; i < weapons.size(); i++){
+            weaponString += weapons.get(i).getName() + ", ";
+        }
         return String.format("%s %s von Spieler %s und %s\n" +
                 "Rüstung: %s\n" +
                 "Waffen: %s", name, title, player.getIgn(), pvp ? "PvP" : "PvE", armoursString, weaponString);

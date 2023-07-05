@@ -41,6 +41,8 @@ public class Armour extends Gear{
 
     @Override
     public String toString(){
-        return String.format("%s of Type %s with %s Protection", super.toString(), type, protection);
+        return this != null ? String.format("%s of Type %s with %s Protection",
+                              super.toString(), type, protection) : "Armour "
+                                                                    + "is null";
     }
 }
