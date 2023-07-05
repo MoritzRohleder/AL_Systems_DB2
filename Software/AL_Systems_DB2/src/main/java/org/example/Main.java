@@ -79,5 +79,8 @@ public class Main {
 
         Armour a = DBManager.loadArmourByName("Iron Helmet");
         System.out.println(a);
+
+        List<Weapon> testWeapons = DBManager.loadWeaponsByType("Sword");
+        System.out.println(testWeapons.get(1).toString());
     }
 }

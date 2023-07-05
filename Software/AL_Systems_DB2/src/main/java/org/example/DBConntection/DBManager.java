@@ -123,6 +123,18 @@ public class DBManager {
     WHERE w.type = type
      */
 
+    public static List<Weapon> loadWeaponsByType(String type){
+        List<Weapon> weapons;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT a FROM Weapon a WHERE a.type = "
+                + "'" + type + "'");
+        weapons = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return weapons;
+    }
+
     /*
     TODO loadWeaponByMaterial(String material){}
     WHERE w.name LIKE material%
