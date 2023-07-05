@@ -178,6 +178,16 @@ public class DBManager {
     /*
     TODO loadPlayerFullTable(){}
      */
+    public static List<Player> loadPlayerFullTable(){
+        List<Player> players;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT p FROM Player p", Player.class);
+        players = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return players;
+    }
 
     /*
     TODO loadPlayerByUUID(String uuid){}
