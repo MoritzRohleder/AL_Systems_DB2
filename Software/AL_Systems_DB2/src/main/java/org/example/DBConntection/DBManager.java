@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import org.example.Entitys.*;
 import org.hibernate.type.AnyType;
 
+import java.util.LinkedList;
 import java.util.List;
 
 public class DBManager {
@@ -22,9 +23,16 @@ public class DBManager {
     Armour Querys
      */
 
-    /*
-    TODO loadArmourFullTable(){}
-     */
+    public static List<Armour> loadArmourFullTable(){
+        List<Armour> armours;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT a FROM Armour a", Armour.class);
+        armours = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return armours;
+    }
 
     /*
     TODO loadArmourByID(int id){}
