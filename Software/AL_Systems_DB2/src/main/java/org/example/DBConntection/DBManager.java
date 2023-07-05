@@ -275,9 +275,18 @@ public class DBManager {
         return rpc;
     }
 
-    /*
-    TODO loadRPCharsByPvP(PvP pvp){}
-     */
+    public static List<RPChar> loadRPCharsByPvP(boolean pvp){
+        List<RPChar> chars;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT rpc FROM RPChar rpc WHERE rpc"
+                                     + ".pvp = " + (pvp ? "1" : "0") + "",
+                                     RPChar.class);
+        chars = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return chars;
+    }
 
     /*
     Allgemeine Querys
