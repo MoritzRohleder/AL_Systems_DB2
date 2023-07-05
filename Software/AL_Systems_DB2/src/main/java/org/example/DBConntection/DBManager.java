@@ -23,7 +23,6 @@ public class DBManager {
     /*
     Armour Querys
      */
-
     public static List<Armour> loadArmourFullTable(){
         List<Armour> armours;
         em = getEntityManager();
@@ -96,7 +95,6 @@ public class DBManager {
     /*
     Weapon Querys
      */
-
     public static List<Weapon> loadWeaponFullTable(){
         List<Weapon> weapons;
         em = getEntityManager();
@@ -127,10 +125,6 @@ public class DBManager {
         return weapon;
     }
 
-    /*
-    TODO loadWeaponByType(String type){}
-    WHERE w.type = type
-     */
     public static List<Weapon> loadWeaponsByType(String type){
         List<Weapon> weapons;
         em = getEntityManager();
@@ -154,12 +148,10 @@ public class DBManager {
         em.close();
         return weapons;
     }
-    
 
     /*
     Faction Querys
      */
-
     public static List<Faction> loadFactionFullTable(){
         List<Faction> factions;
         em = getEntityManager();
@@ -192,17 +184,12 @@ public class DBManager {
     }
 
     /*
-    TODO loadFactionLeader(Faction fac){}
-     */
-
-    /*
     TODO loadPlayersOfFaction(Faction fac){}
      */
 
     /*
     Player Querys
      */
-
     public static List<Player> loadPlayerFullTable(){
         List<Player> players;
         em = getEntityManager();
@@ -217,6 +204,7 @@ public class DBManager {
     /*
     TODO loadPlayerByUUID(String uuid){}
      */
+
     public static Player loadPlayerByIGN(String name){
         em = getEntityManager();
         em.getTransaction().begin();
@@ -252,13 +240,8 @@ public class DBManager {
     }
 
     /*
-    TODO loadFactionOfPlayer(Player p){}
-     */
-
-    /*
     RPChar Querys
      */
-
     public static List<RPChar> loadRPCharFullTable(){
         List<RPChar> chars;
         em = getEntityManager();
@@ -274,6 +257,7 @@ public class DBManager {
     /*
     TODO loadRPCharByID(int id){}
      */
+
     public static RPChar loadRPCharByName(String name) {
         em = getEntityManager();
         em.getTransaction().begin();
@@ -290,18 +274,6 @@ public class DBManager {
         }
         return rpc;
     }
-
-    /*
-    TODO loadPlayerOfRPChar(RPChar rpc){}
-     */
-
-    /*
-    TODO loadWeaponsOfRPChar(RPChar rpc){}
-     */
-
-    /*
-    TODO loadArmourOfRPChar(RPChar rpc){}
-     */
 
     /*
     TODO loadRPCharsByPvP(PvP pvp){}
