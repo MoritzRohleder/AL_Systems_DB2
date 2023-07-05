@@ -34,9 +34,24 @@ public class DBManager {
         return armours;
     }
 
-    /*
-    TODO loadArmourByID(int id){}
-     */
+    public static Armour loadArmourByID(int id){
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Armour> query = em.createQuery("SELECT a FROM Armour a "
+                                                  + "WHERE a.id = '" + id +"'",
+                                                  Armour.class);
+        Armour armour = null;
+        try {
+            armour = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We could not find Armour with the id " + id);
+        }finally {
+            em.close();
+        }
+        return armour;
+    }
+
     public static Armour loadArmourByName(String name){
         em = getEntityManager();
         em.getTransaction().begin();
