@@ -72,7 +72,17 @@ public class DBManager {
     TODO loadArmourByType(String type){}
     WHERE a.type = type
      */
-
+    public static List<Armour> loadArmoursByType(String type){
+        List<Armour> armours;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT a FROM Armour a WHERE a.type = "
+                                     + "'" + type + "'");
+        armours = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return armours;
+    }
     /*
     TODO loadArmourByMaterial(String material){}
     WHERE a.name LIKE material%
