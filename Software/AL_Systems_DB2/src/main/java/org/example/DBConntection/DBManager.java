@@ -132,10 +132,17 @@ public class DBManager {
     WHERE w.type = type
      */
 
-    /*
-    TODO loadWeaponByMaterial(String material){}
-    WHERE w.name LIKE material%
-     */
+    public static List<Weapon> loadWeaponByMaterial(String material){
+        List<Weapon> weapons;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT w FROM Weapon w WHERE w.name "
+                                     + "LIKE '" + material + "%'");
+        weapons = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return weapons;
+    }
 
     /*
     Faction Querys
