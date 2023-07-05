@@ -3,20 +3,20 @@ package org.example.Entitys;
 import jakarta.persistence.*;
 import org.example.CompositeKeys.FactionAllyKey;
 
-@Entity
+//@Entity
 public class FactionAlly {
 
-    @EmbeddedId
+    //@EmbeddedId
     FactionAllyKey id;
 
-    @ManyToOne
-    @MapsId("faction_id")
-    @JoinColumn(name = "faction_id")
+    //@ManyToOne
+    //@MapsId("faction_id")
+    //@JoinColumn(name = "faction_id")
     Faction faction;
 
-    @ManyToOne
-    @MapsId("ally_id")
-    @JoinColumn(name = "ally_id")
+    //@ManyToOne
+    //@MapsId("ally_id")
+    //@JoinColumn(name = "ally_id")
     Faction ally;
 
     public FactionAlly() {

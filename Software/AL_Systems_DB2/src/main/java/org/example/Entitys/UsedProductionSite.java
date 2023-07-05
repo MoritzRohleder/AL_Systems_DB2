@@ -3,21 +3,21 @@ package org.example.Entitys;
 import jakarta.persistence.*;
 import org.example.Enums.Resource;
 
-@Entity
+//@Entity
 public class UsedProductionSite {
-    @Id
-    @GeneratedValue
+    //@Id
+    //@GeneratedValue
     private int id;
 
-    @ManyToOne
-    @JoinColumn(name = "claimbuild_ID")
+    //@ManyToOne
+    //@JoinColumn(name = "claimbuild_ID")
     private Claimbuild claimbuild;
 
-    @ManyToOne
-    @JoinColumn(name = "productionSite_ID")
+    //@ManyToOne
+    //@JoinColumn(name = "productionSite_ID")
     private ProdSite productionSite;
 
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private Resource resource;
 
     private int amount;

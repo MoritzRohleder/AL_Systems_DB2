@@ -6,15 +6,15 @@ import org.example.Enums.ProductionSiteType;
 
 import java.util.Set;
 
-@Entity
-@Table(name = "Production Side")
+//@Entity
+//@Table(name = "Production Side")
 public class ProdSite {
-    @Id
-    @GeneratedValue
+    //@Id
+    //@GeneratedValue
     private int id;
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private ProductionSiteType type;
-    @OneToMany(mappedBy = "productionSite")
+    //@OneToMany(mappedBy = "productionSite")
     private Set<UsedProductionSite> usingClaimbuilds;
 
     public ProdSite() {

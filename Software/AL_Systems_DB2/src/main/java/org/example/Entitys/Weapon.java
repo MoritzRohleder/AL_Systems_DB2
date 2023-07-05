@@ -40,4 +40,10 @@ public class Weapon extends Gear{
     public void setDmg(double dmg) {
         this.dmg = dmg;
     }
+
+    @Override
+    public String toString(){
+        return this != null ? String.format("%s of Type %s dealing %s Damage",
+                              super.toString(), type, dmg) : "Weapon is null";
+    }
 }

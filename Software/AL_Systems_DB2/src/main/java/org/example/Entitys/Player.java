@@ -30,6 +30,10 @@ public class Player {
         this.discordID = discordID;
     }
 
+    public void joinFaction(Faction faction){
+        this.faction = faction;
+    }
+
     public String getUuid() {
         return uuid;
     }
@@ -48,5 +52,14 @@ public class Player {
 
     public void setDiscordID(String discordID) {
         this.discordID = discordID;
+    }
+
+    @Override
+    public String toString(){
+        return this != null ? String.format("Player %s with uuid %s and "
+                                          + "DiscordID "
+                                    + "%s\n" +
+                "Member of %s", ign, uuid, discordID, faction.getName()) :
+                "Player is null";
     }
 }

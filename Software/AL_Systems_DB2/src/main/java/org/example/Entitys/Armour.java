@@ -38,4 +38,11 @@ public class Armour extends Gear{
     public void setProtection(double protection) {
         this.protection = protection;
     }
+
+    @Override
+    public String toString(){
+        return this != null ? String.format("%s of Type %s with %s Protection",
+                              super.toString(), type, protection) : "Armour "
+                                                                    + "is null";
+    }
 }

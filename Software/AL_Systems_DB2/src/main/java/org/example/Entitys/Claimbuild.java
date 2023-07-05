@@ -5,16 +5,16 @@ import org.example.Enums.ClaimbuildType;
 
 import java.util.Set;
 
-@Entity
-@Table(name = "Claimbuild")
+//@Entity
+//@Table(name = "Claimbuild")
 public class Claimbuild {
-    @Id
-    @GeneratedValue
+    //@Id
+    //@GeneratedValue
     private int id;
     private String name;
-    @Enumerated(EnumType.STRING)
+    //@Enumerated(EnumType.STRING)
     private ClaimbuildType type;
-    @Embedded
+    //@Embedded
     /*@AttributeOverrides(
             @AttributeOverride(name = "x", column = @Column(name = "cbXCoord")),
             @AttributeOverride(name = "y", column = @Column(name = "cbYCoord")),
@@ -22,15 +22,15 @@ public class Claimbuild {
     )*/
     private CoordinatesEmbed coords;
 
-    @ManyToOne
-    @JoinColumn(name = "regionnumber", nullable = false)
+    //@ManyToOne
+    //@JoinColumn(name = "regionnumber", nullable = false)
     private Region region;
 
-    @ManyToOne
-    @JoinColumn(name="controllingFaction", nullable = false)
+    //@ManyToOne
+    //@JoinColumn(name="controllingFaction", nullable = false)
     private Faction controllingFaction;
 
-    @OneToMany(mappedBy = "claimbuild")
+    //@OneToMany(mappedBy = "claimbuild")
     Set<UsedProductionSite> productionSites;
 
     public Claimbuild() {

@@ -23,9 +23,9 @@ public class Faction {
     private Alignment alignment;
     @ElementCollection()
     private Set<String> aliases = new HashSet<>();
-    @OneToOne
-    @JoinColumn(name = "regionumber", referencedColumnName = "regionnumber")
-    private Region homeRegion;
+    //@OneToOne
+    //@JoinColumn(name = "regionumber", referencedColumnName = "regionnumber")
+    //private Region homeRegion;
 
     @OneToMany(mappedBy = "faction")
     private Set<Player> players;
@@ -33,8 +33,8 @@ public class Faction {
     //@OneToMany(mappedBy = "ally")
     //private Set<Faction> allies;
 
-    @OneToMany(mappedBy = "controllingFaction")
-    private Set<Claimbuild> claimbuilds;
+    //@OneToMany(mappedBy = "controllingFaction")
+    //private Set<Claimbuild> claimbuilds;
 
     @OneToOne
     @JoinColumn(name = "leaderChar_id", referencedColumnName = "id")
@@ -50,7 +50,7 @@ public class Faction {
         this.colorCode = colorCode;
         this.alignment = alignment;
         this.leader = null;
-        this.homeRegion = null;
+        //this.homeRegion = null;
     }
 
     public int getId() {
@@ -73,7 +73,7 @@ public class Faction {
         return alignment;
     }
 
-    public Set<Claimbuild> getClaimbuilds() {return claimbuilds;}
+    //public Set<Claimbuild> getClaimbuilds() {return claimbuilds;}
 
     public void setName(String name) {
         this.name = name;
@@ -89,5 +89,33 @@ public class Faction {
 
     public void setAlignment(Alignment alignment) {
         this.alignment = alignment;
+    }
+
+    @Override
+    public String toString(){
+        return this != null ? String.format("%s using the %s Alignment and "
+                                            + "the Color %s\n "
+                             + "Buff: %s\n"
+                             + "Faction Leader: %s", name, alignment.name(),
+                             colorCode, buff, leader != null ?
+                                     leader.getName() : "No Leader") :
+                "Faction is null";
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Faction){
+            Faction compFac = (Faction) obj;
+            if (compFac.getName().equals(this.getName())){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
+
+    public void setFactionLeader(RPChar name) {
+        this.leader = name;
     }
 }
