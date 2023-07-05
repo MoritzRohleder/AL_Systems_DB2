@@ -30,8 +30,12 @@ public class Player {
         this.discordID = discordID;
     }
 
-    public void joinFaction(Faction faction){
+    public void setFaction(Faction faction){
         this.faction = faction;
+    }
+
+    public Faction getFaction() {
+        return faction;
     }
 
     public String getUuid() {

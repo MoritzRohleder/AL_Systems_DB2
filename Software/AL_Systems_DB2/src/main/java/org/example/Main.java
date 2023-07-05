@@ -22,7 +22,7 @@ public class Main {
 
         //Ein Beispiel Spieler
         Player anedhel = new Player("ae7219bf-4e44-4bc4-b7fc-3c74e95786f0", "Anedhel", "anedhel");
-        anedhel.joinFaction(DBManager.loadFactionByName("Gondor"));
+        anedhel.setFaction(DBManager.loadFactionByName("Gondor"));
         DBManager.persist(anedhel);
 
         //Ein Beispiel Roleplay Character
