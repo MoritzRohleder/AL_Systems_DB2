@@ -5,6 +5,7 @@ import jdk.jfr.Registered;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "RPChar")
@@ -23,14 +24,14 @@ public class RPChar {
     @JoinColumn(name = "player_uuid", referencedColumnName = "uuid")
     private Player player;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "armours",
             joinColumns = @JoinColumn(name = "RPChar_ID"),
             inverseJoinColumns = @JoinColumn(name = "Armour_ID"))
     private Armour[] armours = new Armour[8];
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "weapons",
             joinColumns = @JoinColumn(name = "RPChar_ID"),
@@ -42,10 +43,23 @@ public class RPChar {
 
     }
 
-    public RPChar(String name, String title, boolean pvp){
+    public RPChar(Player player, String name, String title, boolean pvp){
+        this.player = player;
         this.name = name;
         this.title = title;
         this.pvp = pvp;
+    }
+
+    public void setArmours(Armour[] armours){
+        this.armours = armours;
+    }
+
+    public void setWeapons(List<Weapon> weapons){
+        this.weapons = weapons;
+    }
+
+    public void setPlayer(Player player){
+        this.player = player;
     }
 
     public int getId() {
@@ -74,5 +88,18 @@ public class RPChar {
 
     public void setPvp(boolean pvp) {
         this.pvp = pvp;
+    }
+
+    @Override
+    public String toString(){
+        String armoursString = "";
+        for (int i = 0; i < armours.length; i++){
+            armoursString.concat(armours[i].toString());
+        }
+        String weaponString = "";
+        weapons.forEach(weapon -> weaponString.concat(weapon.toString()));
+        return String.format("%s %s von Spieler %s und %s\n" +
+                "Rüstung: %s\n" +
+                "Waffen: %s", name, title, player.getIgn(), pvp ? "PvP" : "PvE", armoursString, weaponString);
     }
 }

@@ -90,4 +90,23 @@ public class Faction {
     public void setAlignment(Alignment alignment) {
         this.alignment = alignment;
     }
+
+    @Override
+    public String toString(){
+        return String.format("%s using the %s Alignment and the Color %s\n" +
+                "Buff is: %s", name, alignment.name(), colorCode, buff);
+    }
+    @Override
+    public boolean equals(Object obj) {
+        if (obj instanceof Faction){
+            Faction compFac = (Faction) obj;
+            if (compFac.getName().equals(this.getName())){
+                return true;
+            }else{
+                return false;
+            }
+        }else{
+            return false;
+        }
+    }
 }

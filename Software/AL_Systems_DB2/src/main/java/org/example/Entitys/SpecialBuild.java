@@ -4,10 +4,10 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-@Entity
-@Table(name = "SpecialBuild")
+//@Entity
+//@Table(name = "SpecialBuild")
 public class SpecialBuild {
-    @Id
+    //@Id
     private String name;
     private String function;
 

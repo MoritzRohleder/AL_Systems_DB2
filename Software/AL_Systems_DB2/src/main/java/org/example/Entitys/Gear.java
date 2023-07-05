@@ -37,4 +37,9 @@ public abstract class Gear {
     public void setDurability(int durability) {
         this.durability = durability;
     }
+
+    @Override
+    public String toString(){
+        return String.format("%s with %s durability", name, durability);
+    }
 }

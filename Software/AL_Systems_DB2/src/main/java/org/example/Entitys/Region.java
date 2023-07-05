@@ -5,19 +5,19 @@ import org.example.Enums.RegionType;
 
 import java.util.Set;
 
-@Entity
-@Table(name = "Region")
+//@Entity
+//@Table(name = "Region")
 public class Region {
-    @Id
-    @GeneratedValue
+    //@Id
+    //@GeneratedValue
     private int regionnumber;
-    @Column(name = "name", nullable = false)
+    //@Column(name = "name", nullable = false)
     private String name;
-    @Column(name = "type", nullable = false)
-    @Enumerated(EnumType.STRING)
+    //@Column(name = "type", nullable = false)
+    //@Enumerated(EnumType.STRING)
     private RegionType type;
 
-    @OneToMany(mappedBy = "region")
+    //@OneToMany(mappedBy = "region")
     private Set<Claimbuild> claimbuilds;
 
     public Region() {
