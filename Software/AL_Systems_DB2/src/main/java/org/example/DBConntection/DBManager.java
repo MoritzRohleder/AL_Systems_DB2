@@ -227,6 +227,17 @@ public class DBManager {
     /*
     TODO loadRPCharFullTable(){}
      */
+    public static List<RPChar> loadRPCharFullTable(){
+        List<RPChar> chars;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT rpc FROM RPChar rpc",
+                                     RPChar.class);
+        chars = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return chars;
+    }
 
     /*
     TODO loadRPCharByID(int id){}
