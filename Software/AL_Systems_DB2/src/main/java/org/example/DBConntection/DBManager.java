@@ -132,9 +132,16 @@ public class DBManager {
     Faction Querys
      */
 
-    /*
-    TODO loadFactionFullTable(){}
-     */
+    public static List<Faction> loadFactionFullTable(){
+        List<Faction> factions;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT f FROM Faction f", Faction.class);
+        factions = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return factions;
+    }
 
     /*
     TODO loadFactionByID(int id){}
