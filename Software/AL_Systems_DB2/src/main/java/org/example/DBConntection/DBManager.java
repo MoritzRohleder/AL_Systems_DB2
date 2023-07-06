@@ -178,9 +178,23 @@ public class DBManager {
         return factions;
     }
 
-    /*
-    TODO loadFactionByID(int id){}
-     */
+    public static Faction loadFactionByID(int id){
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Faction> query = em.createQuery("SELECT f FROM Faction f "
+                                                   + "WHERE f.id = '" + id +
+                                                   "'", Faction.class);
+        Faction fac = null;
+        try {
+            fac = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We could not find Faction with name " + id);
+        }finally {
+            em.close();
+        }
+        return fac;
+    }
 
     public static Faction loadFactionByName(String name){
         em = getEntityManager();
