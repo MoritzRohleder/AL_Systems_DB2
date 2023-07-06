@@ -291,6 +291,25 @@ public class DBManager {
         return p;
     }
 
+    public static RPChar loadRPCharOfPlayer(String uuid){
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<RPChar> query = em.createQuery("SELECT rpc FROM RPChar rpc "
+                                                  + "WHERE "
+                                                  + "rpc.player = '" + uuid + "'",
+                                                  RPChar.class);
+        RPChar rpc = null;
+        try {
+            rpc = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We couldn´t find a RPChar with Player " + uuid);
+        }finally {
+            em.close();
+        }
+        return rpc;
+    }
+
     /*
     RPChar Querys
      */
