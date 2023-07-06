@@ -73,6 +73,10 @@ public class Faction {
         return alignment;
     }
 
+    public RPChar getLeader() {
+        return leader;
+    }
+
     //public Set<Claimbuild> getClaimbuilds() {return claimbuilds;}
 
     public void setName(String name) {

@@ -242,7 +242,10 @@ public class MainMenu {
                            + "Volk nach Namen suchen [3]\n"
                            + "Anrührer eines Volks ausgeben [4]\n"
                            + "Mitglieder eines Volks ausgeben [5]\n"
-                           + "Zurück [6]");
+                           + "Ein Volk hinzufügen [6]\n"
+                           + "Ein Volk löschen [7]\n"
+                           + "Ein Volk ändern [8]\n"
+                           + "Zurück [9]");
 
         sc = new Scanner(System.in);
         int selected;
@@ -258,19 +261,27 @@ public class MainMenu {
                 TableOutput.outputTable(Tables.Faction);
                 return true;
             case 2:
-                //TODO Volk nach ID suchen
+                FactionMenuFunctions.searchFacByID();
                 return true;
             case 3:
-                //TODO Volk nach Namen suchen
+                FactionMenuFunctions.searchFacByName();
                 return true;
             case 4:
-                //TODO Anrührer eines Volks ausgeben
-                //Faction auswählen, dann leader ausgeben
+                FactionMenuFunctions.getLeaderOfFac();
                 return true;
             case 5:
-                //TODO Mitglieder eines VOlks ausgeben
+                FactionMenuFunctions.getMembersOfFac();
                 return true;
             case 6:
+                //TODO Volk hinzufügen
+                return true;
+            case 7:
+                //TODO Volk löschen
+                return true;
+            case 8:
+                //TODO Volk ändern
+                return true;
+            case 9:
                 System.out.println("Zurück zum Hauptmenü");
                 return false;
             default:
