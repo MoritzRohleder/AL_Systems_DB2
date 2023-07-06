@@ -122,9 +122,14 @@ public class MainMenu {
         switch(selected){
             case 1:
                 //TODO Alle Ausrüstung anzeigen
+                //Alle Rüstungen und alle Waffen holen und in einer Liste
+                // zusammenfügen, dann die neue Liste ausgeben
                 return true;
             case 2:
                 //TODO Ausrüstung nach Material anzeigen
+                //Alle Rüstungen und alle Waffen mit diesem Material holen
+                // und in einer Liste zusammenfügen, dann die neue Liste
+                // ausgeben
                 return true;
             case 3:
                 run(Menues.armourMenu);
@@ -263,6 +268,7 @@ public class MainMenu {
                 return true;
             case 4:
                 //TODO Anrührer eines Volks ausgeben
+                //Faction auswählen, dann leader ausgeben
                 return true;
             case 5:
                 //TODO Mitglieder eines VOlks ausgeben
@@ -313,6 +319,7 @@ public class MainMenu {
                 return true;
             case 5:
                 //TODO Volk eines Spielers ausgeben
+                //Spieler auswählen, dann Faction von diesem ausgeben
                 return true;
             case 6:
                 //TODO Rollenspiel-Charakter eines Spielers ausgeben
@@ -334,7 +341,9 @@ public class MainMenu {
                            + "Charakter nach ID suchen [3]\n"
                            + "Charakter nach Name suchen [4]\n"
                            + "Spieler eines Charakters ausgeben [5]\n"
-                           + "Zurück [6]");
+                           + "Alle Rüstungen eines Charakters ausgeben [6]\n"
+                           + "Alle Waffen eines Charakters ausgeben [7]\n"
+                           + "Zurück [8]");
 
         sc = new Scanner(System.in);
         int selected;
@@ -360,8 +369,17 @@ public class MainMenu {
                 return true;
             case 5:
                 //TODO Spieler eines Charakters ausgeben
+                //RPChar auswählen, dann einfach den Spieler von diesem ausgeben
                 return true;
             case 6:
+                //TODO Alle Rüstungen eines Charakters
+                //RPChar auswählen, dann einfach die Rüstungen von diesem ausgeben
+                return true;
+            case 7:
+                //TODO Alle Waffen eines Charakters
+                //RPChar auswählen, dann einfach die Waffen von diesem ausgeben
+                return true;
+            case 8:
                 System.out.println("Zurück zum Hauptmenü");
                 return false;
             default:
