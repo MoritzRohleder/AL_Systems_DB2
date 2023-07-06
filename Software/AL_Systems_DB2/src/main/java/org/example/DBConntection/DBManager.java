@@ -106,9 +106,24 @@ public class DBManager {
         return weapons;
     }
 
-    /*
-    TODO loadWeaponByID(int id){}
-     */
+    public static Weapon loadWeaponByID(int id){
+        Weapon weapon = null;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Weapon> query =
+                em.createQuery("SELECT w FROM Weapon w WHERE w.id = '" + id +
+                               "'", Weapon.class);
+        try {
+            weapon = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We couldn´t find a weapon with the ID " + id);
+        }finally {
+            em.close();
+        }
+        return weapon;
+    }
+
     public static Weapon loadWeaponByName(String name){
         em = getEntityManager();
         em.getTransaction().begin();
@@ -163,9 +178,23 @@ public class DBManager {
         return factions;
     }
 
-    /*
-    TODO loadFactionByID(int id){}
-     */
+    public static Faction loadFactionByID(int id){
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Faction> query = em.createQuery("SELECT f FROM Faction f "
+                                                   + "WHERE f.id = '" + id +
+                                                   "'", Faction.class);
+        Faction fac = null;
+        try {
+            fac = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We could not find Faction with name " + id);
+        }finally {
+            em.close();
+        }
+        return fac;
+    }
 
     public static Faction loadFactionByName(String name){
         em = getEntityManager();
@@ -201,9 +230,23 @@ public class DBManager {
         return players;
     }
 
-    /*
-    TODO loadPlayerByUUID(String uuid){}
-     */
+    public static Player loadPlayerByUUID(String uuid){
+        Player player = null;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p "
+                                                  + "WHERE p.uuid = '" + uuid + "'",
+                                                  Player.class);
+        try {
+            player = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch(NoResultException e){
+            System.out.println("We could not find a Player with the UUID " + uuid);
+        }finally {
+            em.close();
+        }
+        return player;
+    }
 
     public static Player loadPlayerByIGN(String name){
         em = getEntityManager();
@@ -254,9 +297,24 @@ public class DBManager {
         return chars;
     }
 
-    /*
-    TODO loadRPCharByID(int id){}
-     */
+    public static RPChar loadRPCharByID(int id){
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<RPChar> query = em.createQuery("SELECT rpc FROM RPChar rpc "
+                                                  + "WHERE"
+                                               + " rpc.id = '" + id + "'",
+                                                  RPChar.class);
+        RPChar rpc = null;
+        try {
+            rpc = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We could not find Faction with name " + id);
+        }finally {
+            em.close();
+        }
+        return rpc;
+    }
 
     public static RPChar loadRPCharByName(String name) {
         em = getEntityManager();
@@ -275,9 +333,18 @@ public class DBManager {
         return rpc;
     }
 
-    /*
-    TODO loadRPCharsByPvP(PvP pvp){}
-     */
+    public static List<RPChar> loadRPCharsByPvP(boolean pvp){
+        List<RPChar> chars;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        Query query = em.createQuery("SELECT rpc FROM RPChar rpc WHERE rpc"
+                                     + ".pvp = " + (pvp ? "1" : "0") + "",
+                                     RPChar.class);
+        chars = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return chars;
+    }
 
     /*
     Allgemeine Querys
