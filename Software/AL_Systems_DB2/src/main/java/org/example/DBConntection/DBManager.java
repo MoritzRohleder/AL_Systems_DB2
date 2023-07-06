@@ -212,9 +212,18 @@ public class DBManager {
         return fac;
     }
 
-    /*
-    TODO loadPlayersOfFaction(Faction fac){}
-     */
+    public static List<Player> loadPlayersOfFaction(int fac){
+        List<Player> facMembers;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p "
+                                                  + "WHERE p.faction = '" + fac + "'",
+                                                  Player.class);
+        facMembers = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return facMembers;
+    }
 
     /*
     Player Querys
