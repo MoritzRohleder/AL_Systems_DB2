@@ -3,6 +3,7 @@ package org.example;
 import org.example.DBConntection.DBManager;
 import org.example.Data.*;
 import org.example.Entitys.*;
+import org.example.Enums.Menues;
 import org.example.IO.MainMenu;
 
 import java.util.LinkedList;
@@ -47,6 +48,8 @@ public class Main {
         RPChar aulendur1 = DBManager.loadRPCharByName("Aulendur");
         gondor.setFactionLeader(aulendur1);
         DBManager.update(gondor);
-        //MainMenu.run();
+        System.out.println("Willkommen zum DB-Manager des Arda's Legends "
+                           + "Systems.");
+        MainMenu.run(Menues.mainMenu);
     }
 }

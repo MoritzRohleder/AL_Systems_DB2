@@ -1,6 +1,10 @@
 package org.example.IO;
 
+import org.example.Enums.Menues;
+
+import java.awt.*;
 import java.util.Scanner;
+import java.util.spi.AbstractResourceBundleProvider;
 
 public class MainMenu {
 
@@ -9,10 +13,44 @@ public class MainMenu {
     /**
      * Die Methode run() ruft so lange die mainMenu() Funktion auf, bis diese false zurück gibt.
      */
-    public static void run(){
+    public static void run(Menues menu){
         boolean repeat = true;
-        while(repeat){
-            repeat = mainMenu();
+        switch(menu){
+            case mainMenu:
+                while(repeat){
+                    repeat = mainMenu();
+                }
+                break;
+            case gearMenu:
+                while(repeat){
+                    repeat = gearMenu();
+                }
+                break;
+            case armourMenu:
+                while (repeat){
+                    repeat = armourMenu();
+                }
+                break;
+            case weaponMenu:
+                while(repeat){
+                    repeat = weaponMenu();
+                }
+                break;
+            case facMenu:
+                while (repeat){
+                    repeat = facMenu();
+                }
+                break;
+            case playerMenu:
+                while (repeat){
+                    repeat = playerMenu();
+                }
+                break;
+            case rpCharMenu:
+                while (repeat){
+                    repeat = rpCharMenu();
+                }
+                break;
         }
     }
 
@@ -23,14 +61,13 @@ public class MainMenu {
      * @returns false wenn Beenden [6] ausgewählt wird, ansonsten true
      */
     private static boolean mainMenu(){
-        System.out.println("Willkommen zum DB-Manager des Arda's Legends Systems.\n" +
-                "Bitte wählen Sie eine Funktion aus:\n" +
-                "Tabelle anzeigen [1]\n" +
-                "Nach einem bestimmten Eintrag suchen [2]\n" +
-                "Eintrag aktualisieren [3]\n" +
-                "Eintrag löschen [4]\n" +
-                "Eintrag einfügen [5]\n" +
-                "Beenden [6]");
+        System.out.println("HauptmenÜ:\n"
+                           + "Bitte wählen Sie ein Untermenü aus:\n"
+                           + "Ausrüstung [1]\n"
+                           + "Völker [2]\n"
+                           + "Spieler [3]\n"
+                           + "Rollenspiel-Charakter [4]\n"
+                           + "Beenden [5]");
 
         sc = new Scanner(System.in);
         int selected;
@@ -43,22 +80,289 @@ public class MainMenu {
 
         switch (selected){
             case 1:
-                System.out.println("Tabelle anzeigen ausgewählt");
+                run(Menues.gearMenu);
                 return true;
             case 2:
-                System.out.println("Nach einem bestimmten Eintrag suchen ausgewählt");
+                run(Menues.facMenu);
                 return true;
             case 3:
-                System.out.println("Eintrag aktualisieren ausgewählt");
+                run(Menues.playerMenu);
                 return true;
             case 4:
-                System.out.println("Eintrag löschen ausgewählt");
+                run(Menues.rpCharMenu);
                 return true;
             case 5:
-                System.out.println("Eintrag einfügen ausgewählt");
+                System.out.println("Beenden ausgewählt");
+                return false;
+            default:
+                System.out.println("Bitte geben Sie eine passende Zahl ein.");
+                return true;
+        }
+    }
+
+    private static boolean gearMenu(){
+        System.out.println("Ausrüstungs Menü:\n"
+                           + "Bitte wählen Sie einen der foglenden Punkte "
+                           + "aus:\n"
+                           + "Alle Ausrüstung anzeigen [1]\n"
+                           + "Ausrüstung nach Material anzeigen [2]\n"
+                           + "Rüstungs Menü [3]\n"
+                           + "Waffen Menü [4]\n"
+                           + "Zurück [5]");
+
+        sc = new Scanner(System.in);
+        int selected;
+        try{
+            selected = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("Bitte geben Sie eine Zahl ein.");
+            return true;
+        }
+
+        switch(selected){
+            case 1:
+                //TODO Alle Ausrüstung anzeigen
+                return true;
+            case 2:
+                //TODO Ausrüstung nach Material anzeigen
+                return true;
+            case 3:
+                run(Menues.armourMenu);
+                return true;
+            case 4:
+                run(Menues.weaponMenu);
+                return true;
+            case 5:
+                System.out.println("Zurück zum Hauptmenü");
+                return false;
+            default:
+                System.out.println("Bitte geben Sie eine passende Zahl ein.");
+                return true;
+        }
+    }
+
+    private static boolean armourMenu(){
+        System.out.println("Rüstungs Menü:\n"
+                           + "Bitte wählen Sie einen der foglenden Punkte "
+                           + "aus:\n"
+                           + "Alle Rüstungen anzeigen [1]\n"
+                           + "Rüstung nach ID suchen [2]\n"
+                           + "Rüstung nach Name suchen [3]\n"
+                           + "Rüstung nach Typ suchen [4]\n"
+                           + "Rüstung nach Material suchen [5]\n"
+                           + "Zurück [6]");
+
+        sc = new Scanner(System.in);
+        int selected;
+        try{
+            selected = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("Bitte geben Sie eine Zahl ein.");
+            return true;
+        }
+
+        switch(selected){
+            case 1:
+                //TODO Alle Rüstungen anzeigen
+                return true;
+            case 2:
+                //TODO Rüstungen nach ID suchen
+                return true;
+            case 3:
+                //TODO Rüstungen nach Name suchen
+                return true;
+            case 4:
+                //TODO Rüstungen nach Typ suchen
+                return true;
+            case 5:
+                //TODO Rüstungen nach Material suchen
                 return true;
             case 6:
-                System.out.println("Beenden ausgewählt");
+                System.out.println("Zurück zum Hauptmenü");
+                return false;
+            default:
+                System.out.println("Bitte geben Sie eine passende Zahl ein.");
+                return true;
+        }
+    }
+
+    private static boolean weaponMenu(){
+        System.out.println("Waffen Menü:\n"
+                           + "Bitte wählen Sie einen der foglenden Punkte "
+                           + "aus:\n"
+                           + "Alle Waffen anzeigen [1]\n"
+                           + "Waffe nach ID suchen [2]\n"
+                           + "Waffe nach Name suchen [3]\n"
+                           + "Waffen nach Typ suchen [4]\n"
+                           + "Waffen nach Material suchen [5]\n"
+                           + "Zurück [6]");
+
+        sc = new Scanner(System.in);
+        int selected;
+        try{
+            selected = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("Bitte geben Sie eine Zahl ein.");
+            return true;
+        }
+
+        switch(selected){
+            case 1:
+                //TODO Alle Waffen anzeigen
+                return true;
+            case 2:
+                //TODO Waffe nach ID suchen
+                return true;
+            case 3:
+                //TODO Waffe nach Name suchen
+                return true;
+            case 4:
+                //TODO Waffen nach Typ suchen
+                return true;
+            case 5:
+                //TODO Waffen nach Material suchen
+                return true;
+            case 6:
+                System.out.println("Zurück zum Hauptmenü");
+                return false;
+            default:
+                System.out.println("Bitte geben Sie eine passende Zahl ein.");
+                return true;
+        }
+    }
+
+    private static boolean facMenu(){
+        System.out.println("Völker Menü:\n"
+                           + "Bitte wählen Sie einen der folgenden Punkte "
+                           + "aus:\n"
+                           + "Alle Völker anzeigen [1]\n"
+                           + "Volk nach ID suchen [2]\n"
+                           + "Volk nach Namen suchen [3]\n"
+                           + "Anrührer eines Volks ausgeben [4]\n"
+                           + "Mitglieder eines Volks ausgeben [5]\n"
+                           + "Zurück [6]");
+
+        sc = new Scanner(System.in);
+        int selected;
+        try{
+            selected = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("Bitte geben Sie eine Zahl ein.");
+            return true;
+        }
+
+        switch(selected){
+            case 1:
+                //TODO Alle Völker anzeigen
+                return true;
+            case 2:
+                //TODO Volk nach ID suchen
+                return true;
+            case 3:
+                //TODO Volk nach Namen suchen
+                return true;
+            case 4:
+                //TODO Anrührer eines Volks ausgeben
+                return true;
+            case 5:
+                //TODO Mitglieder eines VOlks ausgeben
+                return true;
+            case 6:
+                System.out.println("Zurück zum Hauptmenü");
+                return false;
+            default:
+                System.out.println("Bitte geben Sie eine passende Zahl ein.");
+                return true;
+        }
+    }
+
+    private static boolean playerMenu(){
+        System.out.println("Spieler Menü:\n"
+                           + "Bitte wählen Sie einen der foglenden Punkte "
+                           + "aus:\n"
+                           + "Alle Spieler anzeigen [1]\n"
+                           + "Spieler nach UUID suchen [2]\n"
+                           + "Spieler nach IGN suchen [3]\n"
+                           + "Spieler nach DiscordID suchen [4]\n"
+                           + "Volk eines Spielers ausgeben [5]\n"
+                           + "Rollenspiel-Charakter eines Spielers ausgeben "
+                           + "[6]\n"
+                           + "Zurück [7]");
+
+        sc = new Scanner(System.in);
+        int selected;
+        try{
+            selected = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("Bitte geben Sie eine Zahl ein.");
+            return true;
+        }
+
+        switch(selected){
+            case 1:
+                //TODO Alle Spieler anzeigen
+                return true;
+            case 2:
+                //TODO Spieler nach UUID suchen
+                return true;
+            case 3:
+                //TODO Spieler nach IGN suchen
+                return true;
+            case 4:
+                //TODO Spieler nach DiscordID suchen
+                return true;
+            case 5:
+                //TODO Volk eines Spielers ausgeben
+                return true;
+            case 6:
+                //TODO Rollenspiel-Charakter eines Spielers ausgeben
+            case 7:
+                System.out.println("Zurück zum Hauptmenü");
+                return false;
+            default:
+                System.out.println("Bitte geben Sie eine passende Zahl ein.");
+                return true;
+        }
+    }
+
+    private static boolean rpCharMenu(){
+        System.out.println("Charakter Menü:\n"
+                           + "Bitte wählen Sie einen der foglenden Punkte "
+                           + "aus:\n"
+                           + "Alle Charaktere anzeigen [1]\n"
+                           + "Charaktere nach Spiel Präferenz ausgeben [2]\n"
+                           + "Charakter nach ID suchen [3]\n"
+                           + "Charakter nach Name suchen [4]\n"
+                           + "Spieler eines Charakters ausgeben [5]\n"
+                           + "Zurück [6]");
+
+        sc = new Scanner(System.in);
+        int selected;
+        try{
+            selected = Integer.parseInt(sc.nextLine());
+        }catch (NumberFormatException e){
+            System.out.println("Bitte geben Sie eine Zahl ein.");
+            return true;
+        }
+
+        switch(selected){
+            case 1:
+                //TODO Alle Charaktere anzeigen
+                return true;
+            case 2:
+                //TODO Charaktere nach Spiel Präferenz ausgeben
+                return true;
+            case 3:
+                //TODO Charakter nach ID suchen
+                return true;
+            case 4:
+                //TODO Charakter nach Name suchen
+                return true;
+            case 5:
+                //TODO Spieler eines Charakters ausgeben
+                return true;
+            case 6:
+                System.out.println("Zurück zum Hauptmenü");
                 return false;
             default:
                 System.out.println("Bitte geben Sie eine passende Zahl ein.");
