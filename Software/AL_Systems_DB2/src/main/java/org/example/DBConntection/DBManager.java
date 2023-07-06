@@ -212,9 +212,18 @@ public class DBManager {
         return fac;
     }
 
-    /*
-    TODO loadPlayersOfFaction(Faction fac){}
-     */
+    public static List<Player> loadPlayersOfFaction(int fac){
+        List<Player> facMembers;
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<Player> query = em.createQuery("SELECT p FROM Player p "
+                                                  + "WHERE p.faction = '" + fac + "'",
+                                                  Player.class);
+        facMembers = query.getResultList();
+        em.getTransaction().commit();
+        em.close();
+        return facMembers;
+    }
 
     /*
     Player Querys
@@ -280,6 +289,25 @@ public class DBManager {
             em.close();
         }
         return p;
+    }
+
+    public static RPChar loadRPCharOfPlayer(String uuid){
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<RPChar> query = em.createQuery("SELECT rpc FROM RPChar rpc "
+                                                  + "WHERE "
+                                                  + "rpc.player = '" + uuid + "'",
+                                                  RPChar.class);
+        RPChar rpc = null;
+        try {
+            rpc = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We couldn´t find a RPChar with Player " + uuid);
+        }finally {
+            em.close();
+        }
+        return rpc;
     }
 
     /*
