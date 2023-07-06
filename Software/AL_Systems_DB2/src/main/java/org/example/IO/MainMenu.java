@@ -1,6 +1,7 @@
 package org.example.IO;
 
 import org.example.Enums.Menues;
+import org.example.Enums.Tables;
 
 import java.util.Scanner;
 
@@ -119,9 +120,7 @@ public class MainMenu {
 
         switch(selected){
             case 1:
-                //TODO Alle Ausrüstung anzeigen
-                //Alle Rüstungen und alle Waffen holen und in einer Liste
-                // zusammenfügen, dann die neue Liste ausgeben
+                TableOutput.outputTable(Tables.Gear);
                 return true;
             case 2:
                 //TODO Ausrüstung nach Material anzeigen
@@ -166,7 +165,7 @@ public class MainMenu {
 
         switch(selected){
             case 1:
-                //TODO Alle Rüstungen anzeigen
+                TableOutput.outputTable(Tables.Armour);
                 return true;
             case 2:
                 //TODO Rüstungen nach ID suchen
@@ -211,7 +210,7 @@ public class MainMenu {
 
         switch(selected){
             case 1:
-                //TODO Alle Waffen anzeigen
+                TableOutput.outputTable(Tables.Weapon);
                 return true;
             case 2:
                 //TODO Waffe nach ID suchen
@@ -256,7 +255,7 @@ public class MainMenu {
 
         switch(selected){
             case 1:
-                //TODO Alle Völker anzeigen
+                TableOutput.outputTable(Tables.Faction);
                 return true;
             case 2:
                 //TODO Volk nach ID suchen
@@ -304,7 +303,7 @@ public class MainMenu {
 
         switch(selected){
             case 1:
-                //TODO Alle Spieler anzeigen
+                TableOutput.outputTable(Tables.Player);
                 return true;
             case 2:
                 //TODO Spieler nach UUID suchen
@@ -354,7 +353,7 @@ public class MainMenu {
 
         switch(selected){
             case 1:
-                //TODO Alle Charaktere anzeigen
+                TableOutput.outputTable(Tables.RPChar);
                 return true;
             case 2:
                 //TODO Charaktere nach Spiel Präferenz ausgeben
