@@ -297,9 +297,24 @@ public class DBManager {
         return chars;
     }
 
-    /*
-    TODO loadRPCharByID(int id){}
-     */
+    public static RPChar loadRPCharByID(int id){
+        em = getEntityManager();
+        em.getTransaction().begin();
+        TypedQuery<RPChar> query = em.createQuery("SELECT rpc FROM RPChar rpc "
+                                                  + "WHERE"
+                                               + " rpc.id = '" + id + "'",
+                                                  RPChar.class);
+        RPChar rpc = null;
+        try {
+            rpc = query.getSingleResult();
+            em.getTransaction().commit();
+        }catch (NoResultException e){
+            System.out.println("We could not find Faction with name " + id);
+        }finally {
+            em.close();
+        }
+        return rpc;
+    }
 
     public static RPChar loadRPCharByName(String name) {
         em = getEntityManager();
