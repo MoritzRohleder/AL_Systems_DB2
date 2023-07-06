@@ -91,6 +91,10 @@ public class Faction {
         this.alignment = alignment;
     }
 
+    public String forSelect(){
+        return String.format("%s mit ID %d", name, id);
+    }
+
     @Override
     public String toString(){
         return this != null ? String.format("%s using the %s Alignment and "

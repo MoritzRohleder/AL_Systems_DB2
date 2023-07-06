@@ -2,9 +2,7 @@ package org.example.IO;
 
 import org.example.Enums.Menues;
 
-import java.awt.*;
 import java.util.Scanner;
-import java.util.spi.AbstractResourceBundleProvider;
 
 public class MainMenu {
 
