@@ -273,10 +273,10 @@ public class MainMenu {
                 FactionMenuFunctions.getMembersOfFac();
                 return true;
             case 6:
-                //TODO Volk hinzufügen
+                FactionMenuFunctions.addFaction();
                 return true;
             case 7:
-                //TODO Volk löschen
+                FactionMenuFunctions.deleteFaction();
                 return true;
             case 8:
                 //TODO Volk ändern
