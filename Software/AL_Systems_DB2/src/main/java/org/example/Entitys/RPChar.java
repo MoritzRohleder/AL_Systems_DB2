@@ -102,6 +102,10 @@ public class RPChar {
         this.pvp = pvp;
     }
 
+    public String forSelect(){
+        return String.format("%s mit ID %d", name, id);
+    }
+
     @Override
     public String toString(){
         if(this == null){
