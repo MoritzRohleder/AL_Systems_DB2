@@ -58,6 +58,11 @@ public class Player {
         this.discordID = discordID;
     }
 
+    public String forSelect(){
+        return String.format("IGN %s/DiscordID %s", ign,
+                             discordID);
+    }
+
     @Override
     public String toString(){
         return this != null ? String.format("Player %s with uuid %s and "
