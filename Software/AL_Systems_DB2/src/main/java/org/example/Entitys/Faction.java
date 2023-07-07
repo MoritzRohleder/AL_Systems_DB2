@@ -73,6 +73,10 @@ public class Faction {
         return alignment;
     }
 
+    public RPChar getLeader() {
+        return leader;
+    }
+
     //public Set<Claimbuild> getClaimbuilds() {return claimbuilds;}
 
     public void setName(String name) {
@@ -89,6 +93,10 @@ public class Faction {
 
     public void setAlignment(Alignment alignment) {
         this.alignment = alignment;
+    }
+
+    public String forSelect(){
+        return String.format("%s mit ID %d", name, id);
     }
 
     @Override
