@@ -99,6 +99,23 @@ public class Faction {
         return String.format("%s mit ID %d", name, id);
     }
 
+    public boolean changed(Faction oldFac){
+        if(this.id == oldFac.getId()){
+            if (this.name.equals(oldFac.getName())){
+                if(this.buff.equals(oldFac.getBuff())){
+                    if(this.colorCode.equals(oldFac.getColorCode())){
+                        if(this.alignment.equals(oldFac.getAlignment())){
+                            if(this.leader == null && oldFac.getLeader() == null || this.leader.equals(oldFac.getLeader())){
+                                return true;
+                            }
+                        }
+                    }
+                }
+            }
+        }
+        return false;
+    }
+
     @Override
     public String toString(){
         return this != null ? String.format("%s using the %s Alignment and "
