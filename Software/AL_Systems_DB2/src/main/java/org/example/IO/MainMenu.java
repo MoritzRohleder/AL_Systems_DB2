@@ -279,7 +279,7 @@ public class MainMenu {
                 FactionMenuFunctions.deleteFaction();
                 return true;
             case 8:
-                //TODO Volk ändern
+                FactionMenuFunctions.updateFaction();
                 return true;
             case 9:
                 System.out.println("Zurück zum Hauptmenü");

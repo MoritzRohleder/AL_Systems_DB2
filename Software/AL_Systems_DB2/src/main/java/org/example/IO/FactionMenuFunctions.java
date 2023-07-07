@@ -154,6 +154,7 @@ public class FactionMenuFunctions {
      * löscht, wenn möglich und sicher.
      */
     public static void deleteFaction(){
+        System.out.println("Volk löschen:");
         Faction fac = selectFaction();
         if(fac == null){
             System.out.println("Das Volk konnte nicht gefunden werden.");
@@ -196,6 +197,140 @@ public class FactionMenuFunctions {
      * Methode um ein ausgewähltes VOlk zu ändern.
      */
     public static void updateFaction(){
-        //TODO
+        System.out.println("Faction ändern:");
+        Faction fac = selectFaction();
+        if(fac == null){
+            System.out.println("Das Volk konnte nicht gefunden werden.");
+            return;
+        }
+        Faction facUpdate = fac;
+        boolean repeatChange = true;
+        sc = new Scanner(System.in);
+        while (repeatChange){
+            System.out.println(fac);
+            System.out.println("Was möchten Sie ändern?\n"
+                               + "Name [1]\n"
+                               + "Buff [2]\n"
+                               + "Farbcode [3]\n"
+                               + "Alignment [4]\n"
+                               + "Anrührer [5]\n"
+                               + "Zurück [6]");
+            int selected = 0;
+            try {
+                selected = Integer.parseInt(sc.nextLine());
+            }catch (NumberFormatException e){
+                System.out.println("Bitte geben Sie eine Zahl ein.");
+                repeatChange = true;
+            }
+            switch (selected){
+                case 1:
+                    System.out.println("Bitte geben Sie einen Namen für das Volk ein:");
+                    String facName = sc.nextLine();
+                    facUpdate.setName(facName);
+                    repeatChange = true;
+                    break;
+                case 2:
+                    System.out.println("Bitte geben Sie den Buff des Volkes ein:");
+                    String facBuff = sc.nextLine();
+                    facUpdate.setBuff(facBuff);
+                    repeatChange = true;
+                    break;
+                case 3:
+                    System.out.println("Bitte geben Sie den Farbcode des Volkes ein:");
+                    String facColor = sc.nextLine();
+                    facUpdate.setColorCode(facColor);
+                    repeatChange = true;
+                    break;
+                case 4:
+                    String facAlignment = "";
+                    boolean repeatAlign = true;
+                    while(repeatAlign){
+                        try{
+                            System.out.println("Bitte geben Sie das InGame-Alignment des Volkes "
+                                               + "ein:");
+                            facAlignment = sc.nextLine();
+                            Alignment test = Alignment.valueOf(facAlignment);
+                            repeatAlign = false;
+                        }catch (IllegalArgumentException e){
+                            System.out.println("Bitte geben Sie einen gültigen Alignment-Wert"
+                                               + " an.");
+                            Alignment[] alignments = Alignment.values();
+                            for (Alignment alignment : alignments) {
+                                System.out.print(alignment.name() + ", ");
+                            }
+                            repeatAlign = true;
+                        }
+                    }
+                    facUpdate.setAlignment(Alignment.valueOf(facAlignment));
+                    repeatChange = true;
+                    break;
+                case 5:
+                    boolean repeatSetLeader = true;
+                    int leaderChoice = 0;
+                    RPChar leader = fac.getLeader();
+                    while (repeatSetLeader){
+                        System.out.println("Bitte wählen Sie eine der folgenden "
+                                           + "Möglichkeiten\n"
+                                           + "Bestehenden Charakter benutzten "
+                                           + "[1]\n"
+                                           + "Neuen Charakter erstellen [2]\n"
+                                           + "Anführer löschen [3]\n"
+                                           + "Abbrechen [4]");
+                        try {
+                            leaderChoice = Integer.parseInt(sc.nextLine());
+                        }catch (NumberFormatException e){
+                            System.out.println("Bitte geben Sie eine Zahl ein.");
+                            repeatSetLeader = true;
+                        }
+                        switch (leaderChoice){
+                            case 1:
+                                System.out.println("Wählen Sie bitte einen der "
+                                                   + "bestehenden Rollenspiel-Charaktere "
+                                                   + "aus.");
+                                leader = RPCharMenuFunctions.selectRPChar();
+                                break;
+                            case 2:
+                                //TODO RPCharMenuFunction.addRPChar()
+                                // fertigstellen
+                                break;
+                            case 3:
+                                leader = null;
+                                System.out.println("Anführer entfernt");
+                                break;
+                            case 4:
+                                System.out.println("Abgebrochen.");
+                                repeatSetLeader = false;
+                                break;
+                            default:
+                                System.out.println("Bitte geben Sie eine "
+                                                   + "passende Zahl ein.");
+                                repeatSetLeader = true;
+                        }
+
+                    }
+                    facUpdate.setFactionLeader(leader);
+                    repeatChange = true;
+                    break;
+                case 6:
+                    repeatChange = false;
+                    break;
+                default:
+                    System.out.println("Bitte geben Sie eine passende Zahl an"
+                                       + ".");
+                    repeatChange = true;
+                    break;
+            }
+            if(facUpdate.changed(fac)){
+                try {
+                    DBManager.update(fac);
+                    System.out.println("Änderungen erfolgreich gespeichert.");
+                }catch (Exception e){
+                    System.out.println("Ups, da ist wohl was schief gelaufen.");
+                    e.printStackTrace();
+                }
+            }else{
+                System.out.println("Keine Änderungen vorgenommen.");
+            }
+        }
     }
 }
