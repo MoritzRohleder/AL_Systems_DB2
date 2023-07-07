@@ -351,7 +351,10 @@ public class MainMenu {
                            + "Spieler eines Charakters ausgeben [5]\n"
                            + "Alle Rüstungen eines Charakters ausgeben [6]\n"
                            + "Alle Waffen eines Charakters ausgeben [7]\n"
-                           + "Zurück [8]");
+                           + "Einen Charakter hinzufügen [8]\n"
+                           + "Einen Charakter löschen [9]\n"
+                           + "Einen Charakter bearbeiten [10]\n"
+                           + "Zurück [11]");
 
         sc = new Scanner(System.in);
         int selected;
@@ -388,6 +391,15 @@ public class MainMenu {
                 //RPChar auswählen, dann einfach die Waffen von diesem ausgeben
                 return true;
             case 8:
+                RPCharMenuFunctions.addRPChar();
+                return true;
+            case 9:
+                //TODO Char löschen
+                return true;
+            case 10:
+                //TODO Char bearbeiten
+                return true;
+            case 11:
                 System.out.println("Zurück zum Hauptmenü");
                 return false;
             default:
