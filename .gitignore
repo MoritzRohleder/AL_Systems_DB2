@@ -25,3 +25,4 @@ replay_pid*
 
 #InteliJ .idea Ordner Dateien
 .idea/
+/Software/AL_Systems_DB2/AL_Systems_DB2.iml
