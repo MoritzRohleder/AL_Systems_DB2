@@ -102,6 +102,7 @@ public class MainMenu {
         }
     }
 
+    //TODO
     private static boolean gearMenu(){
         System.out.println("Ausrüstungs Menü:\n"
                            + "Bitte wählen Sie einen der foglenden Punkte "
@@ -146,6 +147,7 @@ public class MainMenu {
         }
     }
 
+    //TODO
     private static boolean armourMenu(){
         System.out.println("Rüstungs Menü:\n"
                            + "Bitte wählen Sie einen der foglenden Punkte "
