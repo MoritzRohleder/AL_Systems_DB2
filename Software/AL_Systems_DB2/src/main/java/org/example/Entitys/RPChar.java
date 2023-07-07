@@ -113,14 +113,19 @@ public class RPChar {
         }
         String armoursString = "";
         for (int i = 0; i < armours.length; i++){
-            armoursString += armours[i].getName() + ", ";
+            armoursString += armours[i] != null ? armours[i].getName() :
+                    "empty" + ", ";
         }
         String weaponString = "";
         for(int i = 0; i < weapons.size(); i++){
             weaponString += weapons.get(i).getName() + ", ";
         }
-        return String.format("%s %s von Spieler %s und %s\n" +
+        return String.format("%s %s von Spieler %s mit %s\n" +
                 "Rüstung: %s\n" +
-                "Waffen: %s", name, title, player.getIgn(), pvp ? "PvP" : "PvE", armoursString, weaponString);
+                "Waffen: %s", name, title, player != null ? player.getIgn() :
+                                     "empty",
+                             pvp ? "PvP" :
+                                     "PvE",
+                             armoursString, weaponString);
     }
 }
