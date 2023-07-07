@@ -58,6 +58,10 @@ public class Player {
         this.discordID = discordID;
     }
 
+    public RPChar getRpchar(){
+        return this.rpchar;
+    }
+
     public String forSelect(){
         return String.format("IGN %s/DiscordID %s", ign,
                              discordID);

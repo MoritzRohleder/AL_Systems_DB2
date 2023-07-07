@@ -123,7 +123,7 @@ public class RPCharMenuFunctions {
         }
         //Rüstung auswählen
         Armour[] armours = new Armour[8];
-        for (Armour armour : armours) {
+        for(int i = 0; i < armours.length; i++){
             boolean repeatArmourSelect = true;
             while (repeatArmourSelect){
                 System.out.println("Bitte wählen Sie eine der folgenden "
@@ -140,7 +140,12 @@ public class RPCharMenuFunctions {
                 }
                 switch (armourChoice){
                     case 1:
-                        //TODO selectAmourFunction
+                        armours[i] = GearMenuFunctions.selectArmour();
+                        if(armours[i] == null){
+                            System.out.println("Die gewählte Rüstung gibt es "
+                                               + "nicht.");
+                            repeatArmourSelect = true;
+                        }
                         repeatArmourSelect = false;
                         break;
                     case 2:
@@ -148,7 +153,7 @@ public class RPCharMenuFunctions {
                         repeatArmourSelect = false;
                         break;
                     case 3:
-                        armour = null;
+                        armours[i] = null;
                         System.out.println("Slot leer gelassen.");
                         repeatArmourSelect = false;
                         break;
@@ -177,10 +182,17 @@ public class RPCharMenuFunctions {
             }
             switch (weaponChoice){
                 case 1:
-                    //TODO weaponSelect()
+                    Weapon weapon = GearMenuFunctions.selectWeapon();
+                    if(weapon != null){
+                        weaponList.add(weapon);
+                    }else{
+                        System.out.println("Die gewählte Waffe gibt es nicht.");
+                    }
+                    repeatWeaponSelect = true;
                     break;
                 case 2:
                     //TODO addWeapon()
+                    repeatWeaponSelect = true;
                     break;
                 case 3:
                     System.out.println("Waffen auswahl beendet.");
