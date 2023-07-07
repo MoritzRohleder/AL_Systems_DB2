@@ -169,7 +169,7 @@ public class FactionMenuFunctions {
             return;
         }
         System.out.println("Sicher, dass Sie folgendes Volk löschen möchten? "
-                           + "(J/N");
+                           + "(J/N)");
         System.out.println(fac);
         sc = new Scanner(System.in);
         String input = sc.nextLine().toLowerCase();
@@ -207,7 +207,7 @@ public class FactionMenuFunctions {
         boolean repeatChange = true;
         sc = new Scanner(System.in);
         while (repeatChange){
-            System.out.println(fac);
+            System.out.println(facUpdate);
             System.out.println("Was möchten Sie ändern?\n"
                                + "Name [1]\n"
                                + "Buff [2]\n"

@@ -2,8 +2,10 @@ package org.example.IO;
 
 import org.example.DBConntection.DBManager;
 import org.example.Entitys.Armour;
+import org.example.Entitys.Gear;
 import org.example.Entitys.Weapon;
 
+import java.util.LinkedList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -49,5 +51,15 @@ public class GearMenuFunctions {
             }
         }
         return null;
+    }
+
+    public static void selectGearByMaterial(){
+        System.out.println("Bitte geben Sie das Material ein:");
+        sc = new Scanner(System.in);
+        String material = sc.nextLine();
+        List<Gear> gear = new LinkedList<>();
+        gear.addAll(DBManager.loadArmoursByMaterial(material));
+        gear.addAll(DBManager.loadWeaponByMaterial(material));
+        gear.forEach(gear1 -> System.out.println(gear1));
     }
 }

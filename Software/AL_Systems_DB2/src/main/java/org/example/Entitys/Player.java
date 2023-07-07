@@ -72,7 +72,8 @@ public class Player {
         return this != null ? String.format("Player %s with uuid %s and "
                                           + "DiscordID "
                                     + "%s\n" +
-                "Member of %s", ign, uuid, discordID, faction.getName()) :
+                "Member of %s", ign, uuid, discordID, faction != null ?
+                faction.getName() : "no Faction") :
                 "Player is null";
     }
 }

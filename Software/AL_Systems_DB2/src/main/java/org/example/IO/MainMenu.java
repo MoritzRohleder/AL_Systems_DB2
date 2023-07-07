@@ -102,7 +102,6 @@ public class MainMenu {
         }
     }
 
-    //TODO
     private static boolean gearMenu(){
         System.out.println("Ausrüstungs Menü:\n"
                            + "Bitte wählen Sie einen der foglenden Punkte "
@@ -127,10 +126,7 @@ public class MainMenu {
                 TableOutput.outputTable(Tables.Gear);
                 return true;
             case 2:
-                //TODO Ausrüstung nach Material anzeigen
-                //Alle Rüstungen und alle Waffen mit diesem Material holen
-                // und in einer Liste zusammenfügen, dann die neue Liste
-                // ausgeben
+                GearMenuFunctions.selectGearByMaterial();
                 return true;
             case 3:
                 run(Menues.armourMenu);
@@ -147,7 +143,6 @@ public class MainMenu {
         }
     }
 
-    //TODO
     private static boolean armourMenu(){
         System.out.println("Rüstungs Menü:\n"
                            + "Bitte wählen Sie einen der foglenden Punkte "
@@ -173,16 +168,20 @@ public class MainMenu {
                 TableOutput.outputTable(Tables.Armour);
                 return true;
             case 2:
-                //TODO Rüstungen nach ID suchen
+                System.out.println("Bitte ID angeben:");
+                System.out.println(DBManager.loadArmourByID(Integer.parseInt(sc.nextLine())));
                 return true;
             case 3:
-                //TODO Rüstungen nach Name suchen
+                System.out.println("Bitte Name angeben:");
+                System.out.println(DBManager.loadArmourByName(sc.nextLine()));
                 return true;
             case 4:
-                //TODO Rüstungen nach Typ suchen
+                System.out.println("Bitte Typ angeben:");
+                DBManager.loadArmoursByType(sc.nextLine()).forEach(armour -> System.out.println(armour));
                 return true;
             case 5:
-                //TODO Rüstungen nach Material suchen
+                System.out.println("Bitte Material angeben:");
+                DBManager.loadArmoursByMaterial(sc.nextLine()).forEach(armour -> System.out.println(armour));
                 return true;
             case 6:
                 System.out.println("Zurück zum Hauptmenü");
@@ -314,7 +313,9 @@ public class MainMenu {
                            + "Volk eines Spielers ausgeben [5]\n"
                            + "Rollenspiel-Charakter eines Spielers ausgeben "
                            + "[6]\n"
-                           + "Zurück [7]");
+                           + "Spieler hinzufügen [7]\n"
+                           + "Spieler ändern [8]\n"
+                           + "Zurück [9]");
 
         sc = new Scanner(System.in);
         int selected;
@@ -364,6 +365,12 @@ public class MainMenu {
                 }
                 return true;
             case 7:
+                PlayerMenuFunctions.addPlayer();
+                return true;
+            case 8:
+                PlayerMenuFunctions.updatePlayer();
+                return true;
+            case 9:
                 System.out.println("Zurück zum Hauptmenü");
                 return false;
             default:
@@ -447,10 +454,10 @@ public class MainMenu {
                 RPCharMenuFunctions.addRPChar();
                 return true;
             case 9:
-                //TODO Char löschen
+                RPCharMenuFunctions.deleteRPChar();
                 return true;
             case 10:
-                //TODO Char bearbeiten
+                RPCharMenuFunctions.updateRPChar();
                 return true;
             case 11:
                 System.out.println("Zurück zum Hauptmenü");
