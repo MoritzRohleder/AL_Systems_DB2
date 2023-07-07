@@ -1,5 +1,6 @@
 package org.example.IO;
 
+import org.example.DBConntection.DBManager;
 import org.example.Enums.Menues;
 import org.example.Enums.Tables;
 
@@ -213,16 +214,24 @@ public class MainMenu {
                 TableOutput.outputTable(Tables.Weapon);
                 return true;
             case 2:
-                //TODO Waffe nach ID suchen
+                //Waffe nach ID suchen
+                System.out.println("Bitte ID angeben:");
+                System.out.println(DBManager.loadWeaponByID(Integer.parseInt(sc.nextLine())));
                 return true;
             case 3:
-                //TODO Waffe nach Name suchen
+                //Waffe nach Name suchen
+                System.out.println("Bitte Name angeben:");
+                System.out.println(DBManager.loadWeaponByName(sc.nextLine()));
                 return true;
             case 4:
-                //TODO Waffen nach Typ suchen
+                //Waffen nach Typ suchen
+                System.out.println("Bitte Typ angeben:");
+                DBManager.loadWeaponsByType(sc.nextLine()).forEach(weapon -> System.out.println(weapon));
                 return true;
             case 5:
-                //TODO Waffen nach Material suchen
+                //Waffen nach Material suchen
+                System.out.println("Bitte Material angeben:");
+                DBManager.loadWeaponByMaterial(sc.nextLine()).forEach(weapon -> System.out.println(weapon));
                 return true;
             case 6:
                 System.out.println("Zurück zum Hauptmenü");
