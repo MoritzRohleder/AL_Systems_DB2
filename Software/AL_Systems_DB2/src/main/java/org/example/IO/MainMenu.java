@@ -1,6 +1,8 @@
 package org.example.IO;
 
 import org.example.DBConntection.DBManager;
+import org.example.Entitys.Armour;
+import org.example.Entitys.Player;
 import org.example.Enums.Menues;
 import org.example.Enums.Tables;
 
@@ -326,20 +328,39 @@ public class MainMenu {
                 TableOutput.outputTable(Tables.Player);
                 return true;
             case 2:
-                //TODO Spieler nach UUID suchen
+                //Spieler nach UUID suchen
+                System.out.println("Bitte UUID angeben: (ae7219bf-4e44-4bc4-b7fc-3c74e95786f0)" );
+                System.out.println(DBManager.loadPlayerByUUID(sc.nextLine()));
                 return true;
             case 3:
-                //TODO Spieler nach IGN suchen
+                //Spieler nach IGN suchen
+                System.out.println("Bitte IGN angeben: (Anedhel)");
+                System.out.println(DBManager.loadPlayerByIGN(sc.nextLine()));
                 return true;
             case 4:
-                //TODO Spieler nach DiscordID suchen
+                //Spieler nach DiscordID suchen
+                System.out.println("Bitte DiscordId angeben: (anedhel)");
+                System.out.println(DBManager.loadPlayerByDiscordID(sc.nextLine()));
                 return true;
             case 5:
-                //TODO Volk eines Spielers ausgeben
+                //Volk eines Spielers ausgeben
                 //Spieler auswählen, dann Faction von diesem ausgeben
+                System.out.println("Bitte IGN angeben: (Anedhel)");
+                try {
+                    System.out.println(DBManager.loadPlayerByIGN(sc.nextLine()).getFaction());
+                }catch (Exception e){
+
+                }
                 return true;
             case 6:
-                //TODO Rollenspiel-Charakter eines Spielers ausgeben
+                //Rollenspiel-Charakter eines Spielers ausgeben
+                System.out.println("Bitte IGN angeben: (Anedhel)");
+                try {
+                    System.out.println(DBManager.loadPlayerByIGN(sc.nextLine()).getRpchar());
+                }catch (Exception e){
+
+                }
+                return true;
             case 7:
                 System.out.println("Zurück zum Hauptmenü");
                 return false;
@@ -376,25 +397,46 @@ public class MainMenu {
                 TableOutput.outputTable(Tables.RPChar);
                 return true;
             case 2:
-                //TODO Charaktere nach Spiel Präferenz ausgeben
+                //Charaktere nach Spiel Präferenz ausgeben
+                System.out.println("PvP? (true oder false)");
+                System.out.println(DBManager.loadRPCharsByPvP(sc.nextBoolean()));
                 return true;
             case 3:
-                //TODO Charakter nach ID suchen
+                //Charakter nach ID suchen
+                System.out.println("ID angeben: " + DBManager.loadRPCharByID(Integer.parseInt(sc.nextLine())));
                 return true;
             case 4:
-                //TODO Charakter nach Name suchen
+                //Charakter nach Name suchen
+                System.out.println("Name angeben: (Aulendur) ");
+                System.out.println(DBManager.loadRPCharByName(sc.nextLine()));
                 return true;
             case 5:
-                //TODO Spieler eines Charakters ausgeben
+                //Spieler eines Charakters ausgeben
                 //RPChar auswählen, dann einfach den Spieler von diesem ausgeben
+                System.out.println("Name angeben: (Aulendur)");
+                try {
+                    System.out.println(DBManager.loadRPCharByName(sc.nextLine()).getPlayer());
+                }catch (Exception e){
+
+                }
                 return true;
             case 6:
-                //TODO Alle Rüstungen eines Charakters
+                //Alle Rüstungen eines Charakters
                 //RPChar auswählen, dann einfach die Rüstungen von diesem ausgeben
+                System.out.println("Name angeben: (Aulendur)");
+                try {
+                    for (Armour armour : DBManager.loadRPCharByName(sc.nextLine()).getArmours()) {
+                        System.out.println(armour);
+                    }
+                }catch (Exception e){
+
+                }
                 return true;
             case 7:
-                //TODO Alle Waffen eines Charakters
+                //Alle Waffen eines Charakters
                 //RPChar auswählen, dann einfach die Waffen von diesem ausgeben
+                System.out.println("Name angeben: ");
+                DBManager.loadRPCharByName(sc.nextLine()).getWeapons().forEach(weapon -> System.out.println(weapon));
                 return true;
             case 8:
                 System.out.println("Zurück zum Hauptmenü");
