@@ -42,4 +42,8 @@ public abstract class Gear {
     public String toString(){
         return String.format("%s with %s durability", name, durability);
     }
+
+    public String forSelect(){
+        return String.format("%s mit ID %d", name, id);
+    }
 }
